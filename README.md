@@ -1,4 +1,7 @@
 # vk-shop
+# Project description:
+- Vue 2
+- Mobile first
 
 ## Project setup
 ```
