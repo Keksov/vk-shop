@@ -5,12 +5,16 @@
                 <ProductGallery
                     v-bind:photos="product.photos"
                     v-bind:productId="product.id"
+                    v-bind:productPrice="product.price"
+                    v-bind:isBottom="false"
                 />
             </template>
             <template v-else>
-                <ProductGalleryBottom
+                <ProductGallery
                     v-bind:photos="product.photos"
                     v-bind:productId="product.id"
+                    v-bind:productPrice="product.price"
+                    v-bind:isBottom="true"
                 />
             </template>
         </div>
@@ -20,14 +24,12 @@
 
 <script>
 import ProductGallery from '@/components/ProductGallery'
-import ProductGalleryBottom from '@/components/ProductGalleryBottom'
 
 export default {
     name: 'ProductList',
     props:['products'],
     components: {
-        ProductGallery, 
-        ProductGalleryBottom
+        ProductGallery
     }
 }
 </script>

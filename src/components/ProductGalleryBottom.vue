@@ -14,6 +14,6 @@
 <script>
 export default {
     name: 'ProductGalleryBottom',
-    props: ['photos', 'productId']
+    props: ['photos', 'productId', 'productPrice']
 }
 </script>
