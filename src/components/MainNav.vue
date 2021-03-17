@@ -1,17 +1,12 @@
 <template>
   <nav class="nav">
-    <ol class="nav-list">
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-    </ol>
+  
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'MainNav'
+  name: 'MainNav',
 }
 </script>
 
