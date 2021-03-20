@@ -96,6 +96,7 @@
         justify-content: space-between;
         width: 100%;
         z-index: $product-links;
+        
         &-price {
             border: 1px solid #fff;
             border-radius: 13px;
@@ -126,6 +127,7 @@
             }
         }
     }
+    
     &__gallery {
         margin-top: -40px;
     }

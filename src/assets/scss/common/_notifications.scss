@@ -1,0 +1,19 @@
+.notifications {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    min-width: 100px;
+    z-index: $notification;
+    border-radius: 12px;
+    padding: 0 12px;
+    &.success {
+        background-color: green;
+    }
+}

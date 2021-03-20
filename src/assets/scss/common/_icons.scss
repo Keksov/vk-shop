@@ -21,10 +21,43 @@
         }
     }
 
-    &.close {
-        border: none;
-        background: transparent;
-        width: 20px;
-        height: 20px;
+    
+}
+
+button {
+    &.icon {
+        width: 40px;
+        height: 40px;
+        border: 2px solid $grey;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        &.favorite {
+        position: relative;
+
+            .favorite-dot {
+                width: 2px;
+                height: 2px;
+                background-color: $red;
+                position: absolute;
+                top: 6px;
+                right: 6px;
+            }
+        }
+
+        &.close {
+            border: none;
+            background: transparent;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+        }
+    }
+
+    
+    &:focus {
+        outline: none;
     }
 }
