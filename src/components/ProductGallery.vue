@@ -6,9 +6,11 @@
                 <img :src="product.photos[0]" alt="main photo">            
             </div>
             <div v-bind:class="[isBottom ? 'gallery-bottom' : 'gallery-right']">
-                <img :src="product.photos[1]">
-                <img :src="product.photos[2]">
-                <img :src="product.photos[3]">
+                <div v-for="(photo, index) in product.photos" :key="index" :class="[isBottom ? 'gallery-bottom__img' : 'gallery-right__img']">
+                   <template v-if="index > 0 && index < 5">
+                       <img :src="photo" alt="">
+                   </template>
+                </div>
             </div>
             <!-- links -->
         </div>
@@ -28,8 +30,9 @@
                             <div class="product-info__seller-desc_name">{{ product.seller.name }}</div>
                             <div class="product-info__seller-desc_date">{{ currentDateTime(product.date) }}</div>
                         </div>
-                </div>
-                <div class="product-info__text">{{ product.text }}</div>
+                    </div>
+
+                    <div class="product-info__text">{{ product.text }}</div>
                     
                 </div>
                 
@@ -89,7 +92,6 @@ export default {
         return {
            isProductItemShow: false,
            currenPosition: null,
-           productLink: '',
            isCopied: false
         }
     },
@@ -111,7 +113,6 @@ export default {
             this.currenPosition = productCardBox.top + pageYOffset
             
             this.isProductItemShow = true
-            this.productLink = this.product.vk
         },
         closeProduct(){
             this.isProductItemShow = false            
@@ -126,9 +127,8 @@ export default {
             window.scrollTo({top: 0, behavior: "smooth"})
         },
         // copy to clipboard2
-        copySucceeded(){
-            // show notif
-            this.isCopied = true
+        copySucceeded(){            
+            this.isCopied = true // show notif
             setTimeout(() => this.isCopied = false, 2500);
         }
     }
