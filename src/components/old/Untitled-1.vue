@@ -1,21 +1,4 @@
-<template>
-    <div>
-        <div class="gallery-wrapper" @click="showProduct()">
-            
-            <div class="gallery-main" v-bind:class="{ bottom: isBottom }">            
-                <img :src="product.photos[0]" alt="main photo">            
-            </div>
-            <div v-bind:class="[isBottom ? 'gallery-bottom' : 'gallery-right']">
-                <div v-for="(photo, index) in product.photos" :key="index" :class="[isBottom ? 'gallery-bottom__img' : 'gallery-right__img']">
-                   <template v-if="index > 0 && index < 5">
-                       <img :src="photo" alt="">
-                   </template>
-                </div>
-            </div>
-            <!-- links -->
-        </div>
-
-        <transition name="slide" v-on:after-enter="afterEnter" v-on:after-leave="afterLeave">
+<transition name="slide" v-on:after-enter="afterEnter" v-on:after-leave="afterLeave">
             <div class="product-info" :id="'2215'+product.id" v-show="isProductItemShow">
                 <div class="product-info__top">
                     <div class="product-info__vk">
@@ -79,25 +62,10 @@
         <transition name="slide">
             <div v-show="isCopied" class="notifications success">Скопировано</div>
         </transition>
-    </div>
-</template>
 
-<script>
 
-import moment from 'moment'
+        import moment from 'moment'
 
-export default {
-    name: 'ProductGallery',
-    data(){
-        return {
-           isProductItemShow: false,
-           currenPosition: null,
-           isCopied: false
-        }
-    },
-    props: ['product', 'isBottom'],
-  
-    methods:{
         // product show
         afterEnter: function () {            
             window.scrollTo({top: 0, behavior: "smooth"})            
@@ -131,20 +99,3 @@ export default {
             this.isCopied = true // show notif
             setTimeout(() => this.isCopied = false, 2500);
         }
-    }
-
-}
-</script>
-
-<style lang="scss" scoped>
-.slide-leave-active,
-.slide-enter-active {
-  transition: 0.75s;
-}
-.slide-enter {
-  transform: translate(100%, 0);
-}
-.slide-leave-to {
-  transform: translate(100%, 0);
-}
-</style>

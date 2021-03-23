@@ -1,6 +1,9 @@
 <template>
     <div class="product-list">
-        <div class="product-item" v-for="(product, index) of products" :key="index">
+        <div class="product-item"
+            v-for="(product, index) of products" :key="product.id"
+            @showProductInfo='getProductID(sendID)'
+        >
             <template v-if="index % 2 === 0">
                 <ProductGallery
                     v-bind:product="product"
@@ -26,6 +29,11 @@ export default {
     props:['products'],
     components: {
         ProductGallery
+    },
+    methods:{        
+        getProductID(sendID){
+            console.log('cur ID', sendID)
+        }
     }
 }
 </script>
