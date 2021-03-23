@@ -20,13 +20,10 @@ export default {
     },
     methods: {
         ...mapActions([
-            "GET_PRODUCT_TO_ORDER_DESC",
-            "GET_PRODUCT_TYPE"
+            "GET_PRODUCT_INFO"
         ]),
         showProductData(){
-            // this.$emit( 'sendID', this.product_data.id )
-            this.GET_PRODUCT_TO_ORDER_DESC(this.product_data.id)
-            this.GET_PRODUCT_TYPE('to_order')
+            this.GET_PRODUCT_INFO(this.product_data)
         }        
     }
 }

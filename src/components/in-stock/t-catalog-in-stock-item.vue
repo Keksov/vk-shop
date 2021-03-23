@@ -20,13 +20,10 @@ export default {
     },
     methods: {
         ...mapActions([
-            "GET_PRODUCT_IN_STOCK_DESC",
-            "GET_PRODUCT_TYPE"
+            "GET_PRODUCT_INFO"
         ]),
         showProductInStockData(){
-            // this.$emit( 'sendID', this.product_data.id )
-            this.GET_PRODUCT_IN_STOCK_DESC(this.product_data.id)
-            this.GET_PRODUCT_TYPE('in_stock')
+            this.GET_PRODUCT_INFO(this.product_data)
         },
         
     }
