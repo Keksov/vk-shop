@@ -22,7 +22,7 @@ let store = new Vuex.Store({
         SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
             // temporarily limited the length of the array 
             // TODO: remove and set state.products = products
-            let shortProducts = products.slice(0,3)
+            let shortProducts = products.slice(0,5)
             state.products_in_stock = shortProducts
         },
         SET_PRODUCTS_TO_ORDER_TO_STATE: (state, products ) => {

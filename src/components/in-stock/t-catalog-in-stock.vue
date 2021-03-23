@@ -1,9 +1,10 @@
 <template>
     <div class="t-catalog">
         <t-catalog-in-stock-item 
-            v-for="product in PRODUCTS_IN_STOCK"
+            v-for="(product, index) in PRODUCTS_IN_STOCK"
             :key="product.id"
             :product_data="product"
+            :class="{'right': index % 2 === 0, 'bottom': index % 2 !== 0 }"
         />
 
     </div>
