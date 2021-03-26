@@ -4,7 +4,9 @@
         <hr />
         <t-catalog-to-order />
         <hr />
-        <t-card />
+        <transition name="slide">
+            <t-card />
+        </transition>
     </div>
 </template>
 
@@ -26,3 +28,16 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.slide-leave-active,
+.slide-enter-active {
+  transition: 0.75s;
+}
+.slide-enter {
+  transform: translate(100%, 0);
+}
+.slide-leave-to {
+  transform: translate(100%, 0);
+}
+</style>

@@ -4,8 +4,8 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-const url_in_stock = 'https://api.ividos.pro:8443/api/items.php?src=s'
-const url_to_order = 'https://api.ividos.pro:8443/api/items.php?src=a'
+const url_in_stock = 'https://api.ividos.pro:8443/api/items.php?src=s&p=1&ps=5'
+const url_to_order = 'https://api.ividos.pro:8443/api/items.php?src=a&p=1&ps=1'
 
 let store = new Vuex.Store({
     state:{
@@ -22,14 +22,16 @@ let store = new Vuex.Store({
         SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
             // temporarily limited the length of the array 
             // TODO: remove and set state.products = products
-            let shortProducts = products.slice(0,5)
-            state.products_in_stock = shortProducts
+            // let shortProducts = products.slice(0,5)
+            // state.products_in_stock = shortProducts
+            state.products_in_stock = products
         },
         SET_PRODUCTS_TO_ORDER_TO_STATE: (state, products ) => {
             // temporarily limited the length of the array 
             // TODO: remove and set state.products = products
-            let shortProducts = products.slice(0,3)
-            state.products_to_order = shortProducts
+            // let shortProducts = products.slice(0,3)
+            // state.products_to_order = shortProducts
+            state.products_to_order = products
         },
         SET_PRODUCT_INFO:(state, product_info_data) => {
             state.product_info = product_info_data
