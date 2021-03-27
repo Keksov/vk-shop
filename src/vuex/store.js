@@ -17,7 +17,9 @@ let store = new Vuex.Store({
                 return {}
             }
         },
-        product_info_status: false
+        product_info_status: false,
+        notification: null,
+        notification_status: false
     },
     mutations:{
         SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
@@ -32,6 +34,12 @@ let store = new Vuex.Store({
         },
         SET_PRODUCT_INFO_STATUS: (state, new_status) => {
             state.product_info_status = new_status
+        },
+        SET_NOTIFICATION: (state, new_notification_text) => {
+            state.notification = new_notification_text
+        },
+        SET_NOTIFICATION_STATUS: (state, new_notification_status) => {
+            state.notification_status = new_notification_status
         }
     },
     actions:{
@@ -59,7 +67,7 @@ let store = new Vuex.Store({
                 return error
             }
         },
-        GET_PRODUCT_INFO({commit}, product_info_data){
+        GET_PRODUCT_INFO({commit}, product_info_data) {
             try {
                 commit('SET_PRODUCT_INFO', product_info_data)
 
@@ -68,9 +76,26 @@ let store = new Vuex.Store({
                 return error
             }
         },
-        CHANGE_PRODUCT_INFO_STATUS({commit}, new_status){
+        CHANGE_PRODUCT_INFO_STATUS({commit}, new_status) {
             try {
                 commit('SET_PRODUCT_INFO_STATUS', new_status)
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        SHOW_NOTIFICATION({commit}, notification_text) {
+            try {
+                commit('SET_NOTIFICATION', notification_text)
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        CHANGE_NOTIFICATION_STATUS({commit}, new_notification_status) {
+            try {
+                commit('SET_NOTIFICATION_STATUS', new_notification_status)
+                console.log('setted')
             } catch (error) {
                 console.log(error)
                 return error
@@ -78,17 +103,23 @@ let store = new Vuex.Store({
         }
     },
     getters:{
-        PRODUCTS_IN_STOCK(state){
+        PRODUCTS_IN_STOCK (state){
             return state.products_in_stock
         },
-        PRODUCTS_TO_ORDER(state){
+        PRODUCTS_TO_ORDER (state){
             return state.products_to_order
         },
-        PRODUCT_INFO(state){
+        PRODUCT_INFO (state){
             return state.product_info
         },
-        PRODUCT_INFO_STATUS(state){
+        PRODUCT_INFO_STATUS (state){
             return state.product_info_status
+        },
+        NOTIFICATION (state) {
+            return state.notification
+        },
+        NOTIFICATION_STATUS (state) {
+            return state.notification_status
         }
     }
 })

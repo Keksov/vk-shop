@@ -9,6 +9,7 @@
                 <t-card />
             </template>
         </transition>
+        <notifications position="bottom right" />
     </div>
 </template>
 
@@ -18,6 +19,7 @@ import TCatalogInStock from '@/components/in-stock/t-catalog-in-stock'
 import TCatalogToOrder from '@/components/to-order/t-catalog-to-order'
 
 import TCard from './t-card'
+
 
 import {mapGetters} from 'vuex'
 
@@ -29,7 +31,9 @@ export default {
         TCard
     },
     computed:{
-        ...mapGetters(["PRODUCT_INFO_STATUS"])
+        ...mapGetters([
+            "PRODUCT_INFO_STATUS"            
+        ])
     }
 }
 </script>
