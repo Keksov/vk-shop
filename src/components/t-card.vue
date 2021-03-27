@@ -27,6 +27,10 @@
                    </div>
                </div>
            </div>
+
+           <div class="t-card-seller__bottom">
+                {{ PRODUCT_INFO.text }}
+            </div>
        </div>
     </div>
 </template>
