@@ -12,12 +12,28 @@
                     </svg>
                 </button>
            </div>
+
+           <div class="t-card-seller__middle">
+               <div class="t-card-seller__middle-ava"
+               v-bind:style="{ backgroundImage: 'url(' + PRODUCT_INFO.seller.vkav + ')' }"
+               ></div>
+
+               <div class="t-card-seller__middle-info">
+                   <div class="t-card-seller__middle-name">
+                       {{ PRODUCT_INFO.seller.name }}
+                   </div>
+                   <div class="t-card-seller__middle-date">
+                       {{ currentDateTime(PRODUCT_INFO.date)}}
+                   </div>
+               </div>
+           </div>
        </div>
     </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import moment from 'moment'
 
 export default {
     name: 't-card',
@@ -32,7 +48,11 @@ export default {
         ]),
         closeProduct(){
             this.CHANGE_PRODUCT_INFO_STATUS(false)
-        }
+        },
+        currentDateTime(date) {
+            moment.locale("ru")
+            return moment(date).format('D MMM - h:mm')
+        },
     },
     
    

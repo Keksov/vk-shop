@@ -4,11 +4,13 @@ import store from './vuex/store'
 // plugins
 import VueClipboard from 'vue-clipboard2'
 var infiniteScroll =  require('vue-infinite-scroll')
+
 // styles
 import './assets/scss/style.scss'
 
 Vue.use(VueClipboard)
 Vue.use(infiniteScroll)
+
 
 Vue.config.productionTip = false
 
