@@ -1,11 +1,15 @@
 .t-card {
     position: fixed;
+    overflow-y: auto;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: #000;
-    overflow-y: auto;
+    &.top {
+        position: absolute;
+        overflow-y: initial
+    }
 }
 
 .t-card-seller {

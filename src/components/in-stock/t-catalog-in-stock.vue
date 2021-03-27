@@ -43,6 +43,7 @@ export default {
         loadMore: function() {
             if(!this.busy && this.list.length){
                 this.busy = true;
+                // show spinner
                 axios.get(`https://api.ividos.pro:8443/api/items.php?src=s&page=${this.page}&page_size=5`)
                     .then(({ data }) => {
                         this.page += 1

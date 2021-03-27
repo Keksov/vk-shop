@@ -1,6 +1,6 @@
 <template>
-    <div class="t-card" v-scroll-lock="PRODUCT_INFO_STATUS">
-       <div class="t-card-content" >
+    <div class="t-card" >
+       <div class="t-card-content" id="tCardContent">
            <div class="t-card-seller">
            <div class="t-card-seller__top">
                 <div class="t-card-seller__link">
@@ -36,7 +36,7 @@
 
        <div class="t-card-photos">
            <div class="t-card-actions">
-               <button class="t-card-actions__price" @click="goToProductTop">
+               <button class="t-card-actions__price" @click="goToTop">
                    {{ PRODUCT_INFO.price }} р.
                    <span class="t-card-actions__price-plus">
                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,11 +67,6 @@
        </div>
        </div>
 
-        <transition name="slide">
-            <template v-if="NOTIFICATION_STATUS">
-                <t-notification :newNotification="NOTIFICATION" />
-            </template>
-        </transition>
     </div>
 </template>
 
@@ -99,26 +94,28 @@ export default {
             "CHANGE_PRODUCT_INFO_STATUS"
         ]),
         closeProduct(){
+            // убираем лок с боди
+            let bodyElement = document.body
+            bodyElement.classList.toggle('scroll-lock')
+            // закрываем карточку товара
             this.CHANGE_PRODUCT_INFO_STATUS(false)
         },
         currentDateTime(date) {
             moment.locale("ru")
             return moment(date).format('D MMM - h:mm')
         },
-        goToProductTop(){
-            window.scrollTo({top: 0, behavior: "smooth"})
-        },
         // copy to clipboard2
         copySucceeded(){
             this.$notify({
                 type: 'success', 
                 text: 'Скопировано'
-                });
-            // this.CHANGE_NOTIFICATION_STATUS(true)
-            // this.SHOW_NOTIFICATION(this.notifaction_text)
-            // setTimeout(() => {
-            //     this.CHANGE_NOTIFICATION_STATUS(false)
-            // }, 2500)
+            });
+        },
+        goToTop(){
+            let productTop = document.getElementById('tCardContent')
+            // productTop.classList.add('top')
+            productTop.scrollIntoView({block: "start", behavior: "smooth"})
+            // window.scrollTo({top: 0, behavior: "smooth"})
         }
     },
     

@@ -11,10 +11,14 @@ html{
 body {
     min-width: 320px;
     overflow-x: hidden;
+    overflow-y: auto;
     font-family: $font-montserrat;
     margin: 0;
     padding: 0;
     position: relative;
+    &.scroll-lock {
+        overflow-y: hidden;
+    }
 }
 
 // .stop-scrolling {
