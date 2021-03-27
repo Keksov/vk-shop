@@ -45,9 +45,7 @@ export default {
                 this.busy = true;
                 axios.get(`https://api.ividos.pro:8443/api/items.php?src=s&page=${this.page}&page_size=5`)
                     .then(({ data }) => {
-                        console.log('bef page', this.page)
                         this.page += 1
-                        console.log('add page', this.page)
                         this.list.push(...data)
                         this.busy = false
                     })
@@ -62,9 +60,7 @@ export default {
     mounted(){
         axios.get(`https://api.ividos.pro:8443/api/items.php?src=s&page=${this.page}&page_size=5`)
             .then(({ data }) => {
-                console.log('bef page', this.page)
                 this.page += 1
-                console.log('add page', this.page)
                 this.list.push(...data)
                 this.busy = false
             })

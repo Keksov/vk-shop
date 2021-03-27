@@ -16,25 +16,22 @@ let store = new Vuex.Store({
             default(){
                 return {}
             }
-        }
+        },
+        product_info_status: false
     },
     mutations:{
         SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
-            // temporarily limited the length of the array 
-            // TODO: remove and set state.products = products
-            // let shortProducts = products.slice(0,5)
-            // state.products_in_stock = shortProducts
             state.products_in_stock = products
         },
         SET_PRODUCTS_TO_ORDER_TO_STATE: (state, products ) => {
-            // temporarily limited the length of the array 
-            // TODO: remove and set state.products = products
-            // let shortProducts = products.slice(0,3)
-            // state.products_to_order = shortProducts
             state.products_to_order = products
         },
-        SET_PRODUCT_INFO:(state, product_info_data) => {
+        SET_PRODUCT_INFO: (state, product_info_data) => {
             state.product_info = product_info_data
+            state.product_info_status = true
+        },
+        SET_PRODUCT_INFO_STATUS: (state, new_status) => {
+            state.product_info_status = new_status
         }
     },
     actions:{
@@ -64,7 +61,16 @@ let store = new Vuex.Store({
         },
         GET_PRODUCT_INFO({commit}, product_info_data){
             try {
-                commit('SET_PRODUCT_INFO', product_info_data) 
+                commit('SET_PRODUCT_INFO', product_info_data)
+
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        CHANGE_PRODUCT_INFO_STATUS({commit}, new_status){
+            try {
+                commit('SET_PRODUCT_INFO_STATUS', new_status)
             } catch (error) {
                 console.log(error)
                 return error
@@ -80,6 +86,9 @@ let store = new Vuex.Store({
         },
         PRODUCT_INFO(state){
             return state.product_info
+        },
+        PRODUCT_INFO_STATUS(state){
+            return state.product_info_status
         }
     }
 })
