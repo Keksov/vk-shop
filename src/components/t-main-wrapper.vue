@@ -4,7 +4,7 @@
             <TCatalogInStock />
         </div>
         <div class="t-nav">
-            <transition name="slideUp" v-on:before-enter="beforeEnterSlideUp">
+            <transition name="slideUp">
                 <template v-if="CATEGORIES_STATUS">
                     <t-nav-content />
                 </template>
@@ -55,20 +55,11 @@ export default {
     methods: {
         ...mapActions([
             "CHANGE_PRODUCT_INFO_STATUS"
-        ]),
-        beforeEnterSlideUp(){
-            // if(this.PRODUCT_INFO_STATUS) {
-            //     let vm = this
-            //     setTimeout(function () {
-            //         vm.CHANGE_PRODUCT_INFO_STATUS(false)
-            //         console.log('delay')
-
-            //     }, 1000)
-            // }
-        }
+        ])
     },
     mounted(){
         this.CHANGE_PRODUCT_INFO_STATUS()
+        
     }
 }
 </script>

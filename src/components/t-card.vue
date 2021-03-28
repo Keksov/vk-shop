@@ -95,8 +95,8 @@ export default {
         ]),
         closeProduct(){
             // убираем лок с боди
-            let bodyElement = document.body
-            bodyElement.classList.toggle('scroll-lock')
+            // let bodyElement = document.body
+            // bodyElement.classList.toggle('')
             // закрываем карточку товара
             this.CHANGE_PRODUCT_INFO_STATUS(false)
         },

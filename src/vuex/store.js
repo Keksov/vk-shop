@@ -4,14 +4,13 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-const url_in_stock = 'https://api.ividos.pro:8443/api/items.php?src=s&p=1&ps=5'
-const url_to_order = 'https://api.ividos.pro:8443/api/items.php?src=a&p=1&ps=1'
-// const url_base = 'https://api.ividos.pro:8443/api/items.php'
+// const url_in_stock = 'https://api.ividos.pro:8443/api/items.php?src=s&p=1&ps=5'
+// const url_to_order = 'https://api.ividos.pro:8443/api/items.php?src=a&p=1&ps=1'
+const url_base = 'https://api.ividos.pro:8443/api/items.php?category=&ps=5'
 const url_to_categories = 'https://bot.ividos.pro:8443/api/categories.php'
 let store = new Vuex.Store({
     state:{
-        products_in_stock:[],
-        products_to_order:[],
+        products:[],
         product_info: {
             type: Object,
             default(){
@@ -25,12 +24,10 @@ let store = new Vuex.Store({
         categories_status: false
     },
     mutations:{
-        SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
-            state.products_in_stock = products
+        SET_PRODUCTS: (state, in_products ) => {
+            state.products.push(...in_products) 
         },
-        SET_PRODUCTS_TO_ORDER_TO_STATE: (state, products ) => {
-            state.products_to_order = products
-        },
+        // product info
         SET_PRODUCT_INFO: (state, product_info_data) => {
             state.product_info = product_info_data
             state.product_info_status = true
@@ -38,6 +35,7 @@ let store = new Vuex.Store({
         SET_PRODUCT_INFO_STATUS: (state, new_product_info_status) => {
             state.product_info_status = new_product_info_status
         },
+        // categories
         SET_CATEGORIES: (state, categories_list) => {
             state.categories = categories_list
         },
@@ -46,30 +44,20 @@ let store = new Vuex.Store({
         }
     },
     actions:{
-        async GET_PRODUCTS_IN_STOCK({commit}) {
+        async GET_PRODUCTS({commit}, get_products_params) {
             try {
-                const products = await axios(url_in_stock, {
+                let concatedUrl = url_base + '&src=' + get_products_params['product_type'] + '&p='+ get_products_params['page']
+                const get_products = await axios(concatedUrl, {
                     method: "GET"
                 })
-                commit('SET_PRODUCTS_IN_STOCK_TO_STATE', products.data)
-                return products
+                commit('SET_PRODUCTS', get_products.data)
+                return get_products
             } catch (error) {
                 console.log(error)
                 return error
             }
         },
-        async GET_PRODUCTS_TO_ORDER({commit}) {
-            try {
-                const products = await axios(url_to_order, {
-                    method: "GET"
-                })
-                commit('SET_PRODUCTS_TO_ORDER_TO_STATE', products.data)
-                return products
-            } catch (error) {
-                console.log(error)
-                return error
-            }
-        },
+        // product info
         GET_PRODUCT_INFO({commit}, product_info_data) {
             try {
                 commit('SET_PRODUCT_INFO', product_info_data)
@@ -87,6 +75,7 @@ let store = new Vuex.Store({
                 return error
             }
         },
+        // categories
         async GET_CATEGORIES({commit}) {
             try {
                 // let new_url = url_base
@@ -126,18 +115,17 @@ let store = new Vuex.Store({
         }
     },
     getters:{
-        PRODUCTS_IN_STOCK (state){
-            return state.products_in_stock
+        PRODUCTS (state){
+            return state.products
         },
-        PRODUCTS_TO_ORDER (state){
-            return state.products_to_order
-        },
+        // product info
         PRODUCT_INFO (state) {
             return state.product_info
         },
         PRODUCT_INFO_STATUS (state) {
             return state.product_info_status
         },
+        // categories
         CATEGORIES (state) {
             return state.categories
         },

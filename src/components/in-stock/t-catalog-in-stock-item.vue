@@ -42,8 +42,8 @@ export default {
         ]),
         showProductInStockData(){
             // блокаем скролл
-            let bodyElement = document.body
-            bodyElement.classList.toggle('scroll-lock')
+            // let bodyElement = document.body
+            // bodyElement.classList.toggle('scroll-lock')
             // показываем карточку товара
             this.GET_PRODUCT_INFO(this.product_data)
         },
