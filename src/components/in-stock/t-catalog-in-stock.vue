@@ -47,15 +47,27 @@ export default {
         ]),
         loadMore: function() {
             
-            if(!this.busy && this.PRODUCTS.length){
+            if(!this.busy && this.PRODUCTS.length > 0){
                 
                 
-                
+                console.log('no data', this.PRODUCTS.length)
                 this.busy = true;
                 // show spinner
                 try {
                     this.products_params.page += 1
                     this.GET_PRODUCTS(this.products_params)
+                    .then(response => {
+                        
+                        if(response.data.length == 0){
+                            this.$notify({
+                                type: 'info ', 
+                                text: 'В данной категории больше товаров нет',
+                                duration: 1500
+                            })
+                            
+                        }
+                        
+                    })
                     // this.list.push(...this.PRODUCTS)
                     this.busy = false
                 } catch (error) {
