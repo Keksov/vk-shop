@@ -108,7 +108,8 @@ export default {
         copySucceeded(){
             this.$notify({
                 type: 'success', 
-                text: 'Скопировано'
+                text: 'Скопировано',
+                duration: 1500
             });
         },
         goToTop(){
