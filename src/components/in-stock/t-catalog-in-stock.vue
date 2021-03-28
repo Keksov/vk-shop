@@ -48,6 +48,9 @@ export default {
         loadMore: function() {
             
             if(!this.busy && this.PRODUCTS.length){
+                
+                
+                
                 this.busy = true;
                 // show spinner
                 try {
@@ -60,7 +63,7 @@ export default {
                     this.busy = false
                 }
             }
-        },
+        }
         
     },
     mounted() {

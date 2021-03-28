@@ -20,6 +20,7 @@
             <div class="t-nav-content__categories-item"
             v-for="(category, index_category) in CATEGORIES"
             :key="index_category"
+            @click="sortByCategory(category.name)"
             >
             {{ category.name }}
             </div>
@@ -35,10 +36,15 @@ export default {
     methods: {
         ...mapActions([
             "GET_CATEGORIES",
-            "CHANGE_CATEGORIES_STATUS"
+            "CHANGE_CATEGORIES_STATUS",
+            "CHANGE_CATEGORY"
         ]),
         closeCategory(){
             this.CHANGE_CATEGORIES_STATUS(false)
+        },
+        sortByCategory(category){
+            this.CHANGE_CATEGORY(category)
+            console.log(category)
         }
     },
     computed:{

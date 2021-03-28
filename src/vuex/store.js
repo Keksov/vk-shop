@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 // const url_in_stock = 'https://api.ividos.pro:8443/api/items.php?src=s&p=1&ps=5'
 // const url_to_order = 'https://api.ividos.pro:8443/api/items.php?src=a&p=1&ps=1'
-const url_base = 'https://api.ividos.pro:8443/api/items.php?category=&ps=5'
+const url_base = 'https://api.ividos.pro:8443/api/items.php?ps=5&category='
 const url_to_categories = 'https://bot.ividos.pro:8443/api/categories.php'
 let store = new Vuex.Store({
     state:{
@@ -19,9 +19,10 @@ let store = new Vuex.Store({
         },
         product_info_status: false,
         
-        // nav
+        // category
         categories: [],
-        categories_status: false
+        categories_status: false,
+        category: ''
     },
     mutations:{
         SET_PRODUCTS: (state, in_products ) => {
@@ -41,12 +42,16 @@ let store = new Vuex.Store({
         },
         SET_CATEGORIES_STATUS: (state, new_categories_status) => {
             state.categories_status = new_categories_status
+        },
+        SET_CATEGORY: (state, get_in_category) => {
+            state.products = []
+            state.category = get_in_category
         }
     },
     actions:{
         async GET_PRODUCTS({commit}, get_products_params) {
             try {
-                let concatedUrl = url_base + '&src=' + get_products_params['product_type'] + '&p='+ get_products_params['page']
+                let concatedUrl = url_base + this.getters.CATEGORY + '&src=' + get_products_params['product_type'] + '&p='+ get_products_params['page']
                 const get_products = await axios(concatedUrl, {
                     method: "GET"
                 })
@@ -112,6 +117,16 @@ let store = new Vuex.Store({
                 console.log(error)
                 return error
             }
+        },
+        async CHANGE_CATEGORY({commit}, in_category){
+            commit('SET_CATEGORY', in_category)
+            let concatedUrl = url_base + this.getters.CATEGORY + '&src=s' + '&p=0'
+                const get_products = await axios(concatedUrl, {
+                    method: "GET"
+                })
+            commit('SET_PRODUCTS', get_products.data)
+            
+            commit('SET_CATEGORIES_STATUS', false)
         }
     },
     getters:{
@@ -131,6 +146,9 @@ let store = new Vuex.Store({
         },
         CATEGORIES_STATUS (state) {
             return state.categories_status
+        },
+        CATEGORY (state) {
+            return state.category
         }
     }
 })
