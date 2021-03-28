@@ -39,12 +39,25 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
 export default {
     name: 't-nav',
     methods: {
+        ...mapActions([
+            "CHANGE_CATEGORIES_STATUS"
+        ]),
         showCategory() {
-            console.log('show category')
+            if(this.CATEGORIES_STATUS) {
+                this.CHANGE_CATEGORIES_STATUS(false)
+            } else {
+                this.CHANGE_CATEGORIES_STATUS(true)
+            }            
         }
+    },
+    computed:{
+        ...mapGetters([
+            "CATEGORIES_STATUS"
+        ])
     }
 }
 </script>

@@ -19,7 +19,10 @@ let store = new Vuex.Store({
             }
         },
         product_info_status: false,
-        categories: []
+        
+        // nav
+        categories: [],
+        categories_status: false
     },
     mutations:{
         SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
@@ -32,11 +35,14 @@ let store = new Vuex.Store({
             state.product_info = product_info_data
             state.product_info_status = true
         },
-        SET_PRODUCT_INFO_STATUS: (state, new_status) => {
-            state.product_info_status = new_status
+        SET_PRODUCT_INFO_STATUS: (state, new_product_info_status) => {
+            state.product_info_status = new_product_info_status
         },
         SET_CATEGORIES: (state, categories_list) => {
             state.categories = categories_list
+        },
+        SET_CATEGORIES_STATUS: (state, new_categories_status) => {
+            state.categories_status = new_categories_status
         }
     },
     actions:{
@@ -73,9 +79,9 @@ let store = new Vuex.Store({
                 return error
             }
         },
-        CHANGE_PRODUCT_INFO_STATUS({commit}, new_status) {
+        CHANGE_PRODUCT_INFO_STATUS({commit}, new_product_info_status) {
             try {
-                commit('SET_PRODUCT_INFO_STATUS', new_status)
+                commit('SET_PRODUCT_INFO_STATUS', new_product_info_status)
             } catch (error) {
                 console.log(error)
                 return error
@@ -97,6 +103,14 @@ let store = new Vuex.Store({
                 console.log(error)
                 return error
             }
+        },
+        CHANGE_CATEGORIES_STATUS({commit}, new_categories_status) {
+            try {
+                commit('SET_CATEGORIES_STATUS', new_categories_status)
+            } catch (error) {
+                console.log(error)
+                return error
+            }
         }
     },
     getters:{
@@ -114,6 +128,9 @@ let store = new Vuex.Store({
         },
         CATEGORIES (state) {
             return state.categories
+        },
+        CATEGORIES_STATUS (state) {
+            return state.categories_status
         }
     }
 })

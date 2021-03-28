@@ -4,13 +4,15 @@
             <TCatalogInStock />
         </div>
         <div class="t-nav">
-            <transition name="slide">
-                <t-nav-content />
+            <transition name="slideUp">
+                <template v-if="CATEGORIES_STATUS">
+                    <t-nav-content />
+                </template>
             </transition>
             <t-nav />
         </div>
         
-        <transition name="slide">
+        <transition name="slideLeft">
             <template v-if="PRODUCT_INFO_STATUS">
                 <t-card />
             </template>
@@ -46,21 +48,33 @@ export default {
     },
     computed:{
         ...mapGetters([
-            "PRODUCT_INFO_STATUS"            
+            "PRODUCT_INFO_STATUS",
+            "CATEGORIES_STATUS"            
         ])
     }
 }
 </script>
 
 <style lang="scss">
-.slide-leave-active,
-.slide-enter-active {
+.slideLeft-leave-active,
+.slideLeft-enter-active {
   transition: 1s;
 }
-.slide-enter {
+.slideLeft-enter {
   transform: translate(100%, 0);
 }
-.slide-leave-to {
+.slideLeft-leave-to {
   transform: translate(100%, 0);
+}
+
+.slideUp-leave-active,
+.slideUp-enter-active {
+  transition: 1s;
+}
+.slideUp-enter {
+  transform: translateY(100%);
+}
+.slideUp-leave-to {
+  transform: translateY(100%);
 }
 </style>
