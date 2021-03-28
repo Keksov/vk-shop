@@ -3,7 +3,10 @@
         <div class="t-main__catalog">
             <TCatalogInStock />
         </div>
-        <div class="t-main__nav">
+        <div class="t-nav">
+            <transition name="slide">
+                <t-nav-content />
+            </transition>
             <t-nav />
         </div>
         
@@ -12,6 +15,7 @@
                 <t-card />
             </template>
         </transition>
+
         <notifications
             classes="t-notification"
             width="100%"
@@ -27,7 +31,7 @@ import TCatalogInStock from '@/components/in-stock/t-catalog-in-stock'
 
 import TCard from './t-card'
 import TNav from './t-nav'
-
+import TNavContent from './nav/t-nav-content'
 
 import {mapGetters} from 'vuex'
 
@@ -37,7 +41,8 @@ export default {
         TCatalogInStock,
         // TCatalogToOrder,
         TCard,
-        TNav
+        TNav,
+        TNavContent
     },
     computed:{
         ...mapGetters([

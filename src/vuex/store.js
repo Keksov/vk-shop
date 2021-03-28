@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 const url_in_stock = 'https://api.ividos.pro:8443/api/items.php?src=s&p=1&ps=5'
 const url_to_order = 'https://api.ividos.pro:8443/api/items.php?src=a&p=1&ps=1'
-
+// const url_base = 'https://api.ividos.pro:8443/api/items.php'
+const url_to_categories = 'https://bot.ividos.pro:8443/api/categories.php'
 let store = new Vuex.Store({
     state:{
         products_in_stock:[],
@@ -17,7 +18,8 @@ let store = new Vuex.Store({
                 return {}
             }
         },
-        product_info_status: false
+        product_info_status: false,
+        categories: []
     },
     mutations:{
         SET_PRODUCTS_IN_STOCK_TO_STATE: (state, products ) => {
@@ -32,6 +34,9 @@ let store = new Vuex.Store({
         },
         SET_PRODUCT_INFO_STATUS: (state, new_status) => {
             state.product_info_status = new_status
+        },
+        SET_CATEGORIES: (state, categories_list) => {
+            state.categories = categories_list
         }
     },
     actions:{
@@ -75,6 +80,23 @@ let store = new Vuex.Store({
                 console.log(error)
                 return error
             }
+        },
+        async GET_CATEGORIES({commit}) {
+            try {
+                // let new_url = url_base
+                // new_url += url_type
+                // const categories_list = await axios(new_url, {
+                //     method: "GET"
+                // })
+                let categories_list = await axios(url_to_categories, {
+                    method: "GET"
+                })
+                commit('SET_CATEGORIES', categories_list.data)
+                return categories_list
+            } catch(error) {
+                console.log(error)
+                return error
+            }
         }
     },
     getters:{
@@ -84,11 +106,14 @@ let store = new Vuex.Store({
         PRODUCTS_TO_ORDER (state){
             return state.products_to_order
         },
-        PRODUCT_INFO (state){
+        PRODUCT_INFO (state) {
             return state.product_info
         },
-        PRODUCT_INFO_STATUS (state){
+        PRODUCT_INFO_STATUS (state) {
             return state.product_info_status
+        },
+        CATEGORIES (state) {
+            return state.categories
         }
     }
 })
