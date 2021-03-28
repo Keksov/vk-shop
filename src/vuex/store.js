@@ -106,7 +106,19 @@ let store = new Vuex.Store({
         },
         CHANGE_CATEGORIES_STATUS({commit}, new_categories_status) {
             try {
-                commit('SET_CATEGORIES_STATUS', new_categories_status)
+                if(this.state.product_info_status){
+                    commit('SET_PRODUCT_INFO_STATUS', false)
+                    setTimeout(function () {
+                        commit('SET_CATEGORIES_STATUS', new_categories_status)
+                        console.log('delay')
+
+                    }, 900)
+                } else {
+                    commit('SET_CATEGORIES_STATUS', new_categories_status)
+                }
+                
+                
+                
             } catch (error) {
                 console.log(error)
                 return error

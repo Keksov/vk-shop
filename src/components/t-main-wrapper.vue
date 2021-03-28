@@ -4,7 +4,7 @@
             <TCatalogInStock />
         </div>
         <div class="t-nav">
-            <transition name="slideUp">
+            <transition name="slideUp" v-on:before-enter="beforeEnterSlideUp">
                 <template v-if="CATEGORIES_STATUS">
                     <t-nav-content />
                 </template>
@@ -35,7 +35,7 @@ import TCard from './t-card'
 import TNav from './t-nav'
 import TNavContent from './nav/t-nav-content'
 
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
     name: 't-main-wrapper',
@@ -51,6 +51,24 @@ export default {
             "PRODUCT_INFO_STATUS",
             "CATEGORIES_STATUS"            
         ])
+    },
+    methods: {
+        ...mapActions([
+            "CHANGE_PRODUCT_INFO_STATUS"
+        ]),
+        beforeEnterSlideUp(){
+            // if(this.PRODUCT_INFO_STATUS) {
+            //     let vm = this
+            //     setTimeout(function () {
+            //         vm.CHANGE_PRODUCT_INFO_STATUS(false)
+            //         console.log('delay')
+
+            //     }, 1000)
+            // }
+        }
+    },
+    mounted(){
+        this.CHANGE_PRODUCT_INFO_STATUS()
     }
 }
 </script>

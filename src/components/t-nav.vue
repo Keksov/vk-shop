@@ -44,19 +44,22 @@ export default {
     name: 't-nav',
     methods: {
         ...mapActions([
-            "CHANGE_CATEGORIES_STATUS"
+            "CHANGE_CATEGORIES_STATUS",
+            "CHANGE_PRODUCT_INFO_STATUS"
         ]),
         showCategory() {
+            
             if(this.CATEGORIES_STATUS) {
                 this.CHANGE_CATEGORIES_STATUS(false)
             } else {
-                this.CHANGE_CATEGORIES_STATUS(true)
+                this.CHANGE_CATEGORIES_STATUS(true)                
             }            
         }
     },
     computed:{
         ...mapGetters([
-            "CATEGORIES_STATUS"
+            "CATEGORIES_STATUS",
+            "PRODUCT_INFO_STATUS"
         ])
     }
 }
