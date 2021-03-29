@@ -11,10 +11,19 @@
             </button>
         </div>
         <div class="t-nav-content__search-wrapper">
-            <form action="/" method="post">
-                <input type="text" value="">
-                <input type="submit" />
+            <form class="t-nav-search" @submit.prevent="sortBySearch(seatchText)">
+                <input type="search" v-model="seatchText" placeholder="Поиск" class="t-nav-search__input">
+                <button type="submit" class="t-nav-search__submit" @click="sortBySearch(seatchText)">
+                    <i>
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="9" stroke="#555555" stroke-width="2"/>
+                    <path d="M17.7012 18C19.0873 19.3341 20.4733 20.6681 21.8594 22.0022" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </i>
+                </button>
             </form>
+
+            
         </div>
         <div class="t-nav-content__categories-wrapper">
             <div class="t-nav-content__categories-item"
@@ -33,6 +42,11 @@ import {mapGetters, mapActions} from 'vuex'
 
 export default {
     name: 't-nav-content',
+    data(){
+        return {
+            seatchText: ''
+        }
+    },
     methods: {
         ...mapActions([
             "GET_CATEGORIES",
@@ -45,6 +59,10 @@ export default {
         sortByCategory(category){
             this.CHANGE_CATEGORY(category)
             console.log(category)
+        },
+        sortBySearch(text){
+            this.CHANGE_CATEGORY(text)
+            console.log('search', text)
         }
     },
     computed:{

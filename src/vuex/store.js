@@ -124,9 +124,10 @@ let store = new Vuex.Store({
                 const get_products = await axios(concatedUrl, {
                     method: "GET"
                 })
+            commit('SET_CATEGORIES_STATUS', false)
             commit('SET_PRODUCTS', get_products.data)
             
-            commit('SET_CATEGORIES_STATUS', false)
+            
         }
     },
     getters:{

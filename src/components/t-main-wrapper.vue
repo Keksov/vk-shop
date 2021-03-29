@@ -32,7 +32,7 @@ import TCatalogInStock from '@/components/in-stock/t-catalog-in-stock'
 // import TCatalogToOrder from '@/components/to-order/t-catalog-to-order'
 
 import TCard from './t-card'
-import TNav from './t-nav'
+import TNav from './nav/t-nav'
 import TNavContent from './nav/t-nav-content'
 
 import {mapGetters, mapActions} from 'vuex'

@@ -81,3 +81,20 @@
         }
     }
 }
+
+.t-nav-search {
+    width: 100%;
+    display: flex;
+    border: 1px solid rgba(85, 85, 85, 0.3);
+    background-color: #fff;
+    border-radius: 13px;
+    padding: 7px 10px;
+    &__input {
+        width: 100%;
+        border: none;
+        outline: none;
+    }
+    &__submit {
+        margin-left: 5px;
+    }
+}
