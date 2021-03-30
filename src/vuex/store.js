@@ -46,6 +46,9 @@ let store = new Vuex.Store({
         SET_CATEGORY: (state, get_in_category) => {
             state.products = []
             state.category = get_in_category
+        },
+        SET_CLEAR_PRODUCTS: (state) => {
+            state.products = []
         }
     },
     actions:{
@@ -104,7 +107,6 @@ let store = new Vuex.Store({
                     commit('SET_PRODUCT_INFO_STATUS', false)
                     setTimeout(function () {
                         commit('SET_CATEGORIES_STATUS', new_categories_status)
-                        console.log('delay')
 
                     }, 900)
                 } else {
@@ -125,9 +127,13 @@ let store = new Vuex.Store({
                     method: "GET"
                 })
             commit('SET_CATEGORIES_STATUS', false)
+            commit('SET_CLEAR_PRODUCTS')
             commit('SET_PRODUCTS', get_products.data)
             
             
+        },
+        CLEAR_PRODUCTS({commit}) {
+            commit('SET_CLEAR_PRODUCTS')
         }
     },
     getters:{

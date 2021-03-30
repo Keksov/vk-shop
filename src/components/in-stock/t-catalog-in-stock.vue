@@ -43,17 +43,19 @@ export default {
     },
     methods: {
         ...mapActions([
-            "GET_PRODUCTS"
+            "GET_PRODUCTS",
+            "CLEAR_PRODUCTS"
         ]),
         loadMore: function() {
-            
-            if(!this.busy && this.PRODUCTS.length > 0){
-                
-                
-                console.log('no data', this.PRODUCTS.length)
+          
+            if(!this.busy && this.PRODUCTS.length > 4){
                 this.busy = true;
                 // show spinner
                 try {
+                    // console.log('page ', this.products_params.page)
+                    // if(this.products_params.page == 0) {
+                    //     this.CLEAR_PRODUCTS()
+                    // }
                     this.products_params.page += 1
                     this.GET_PRODUCTS(this.products_params)
                     .then(response => {
@@ -80,7 +82,6 @@ export default {
     },
     mounted() {
         this.GET_PRODUCTS(this.products_params)
-
     }
 
 }

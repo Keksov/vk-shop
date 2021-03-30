@@ -58,11 +58,9 @@ export default {
         },
         sortByCategory(category){
             this.CHANGE_CATEGORY(category)
-            console.log(category)
         },
         sortBySearch(text){
             this.CHANGE_CATEGORY(text)
-            console.log('search', text)
         }
     },
     computed:{
