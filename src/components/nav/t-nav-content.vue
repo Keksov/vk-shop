@@ -27,7 +27,7 @@
         </div>
         <div class="t-nav-content__categories-wrapper">
             <div class="t-nav-content__categories-item"
-            v-for="(category, index_category) in CATEGORIES"
+            v-for="(category, index_category) in GET_CATEGORIES"
             :key="index_category"
             @click="sortByCategory(category.name)"
             >
@@ -49,12 +49,12 @@ export default {
     },
     methods: {
         ...mapActions([
-            "GET_CATEGORIES",
-            "CHANGE_CATEGORIES_STATUS",
+            "SHOW_CATEGORIES",
+            "CHANGE_CATEGORIES_SHOW_STATUS",
             "CHANGE_CATEGORY"
         ]),
         closeCategory(){
-            this.CHANGE_CATEGORIES_STATUS(false)
+            this.CHANGE_CATEGORIES_SHOW_STATUS(false)
         },
         sortByCategory(category){
             this.CHANGE_CATEGORY(category)
@@ -65,11 +65,11 @@ export default {
     },
     computed:{
         ...mapGetters([
-            "CATEGORIES"
+            "GET_CATEGORIES" 
         ])
     },
     mounted(){
-        this.GET_CATEGORIES()
+        this.SHOW_CATEGORIES()
     }
 }
 </script>

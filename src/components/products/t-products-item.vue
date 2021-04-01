@@ -38,20 +38,21 @@ export default {
     },
     methods: {
         ...mapActions([
-            "GET_PRODUCT_INFO"
+            "SHOW_PRODUCT",
+            "CHANGE_PRODUCT_SHOW_STATUS"
         ]),
         showProductData(){
             // блокаем скролл
             // let bodyElement = document.body
             // bodyElement.classList.toggle('scroll-lock')
             // показываем карточку товара
-            // this.GET_PRODUCT_INFO(this.product_data)
+            this.SHOW_PRODUCT(this.product_data)
+            this.CHANGE_PRODUCT_SHOW_STATUS(true)
             console.log('show product ')
         },
         tapHandler(){
             this.showProductData()
         }
-        
     }
 }
 </script>

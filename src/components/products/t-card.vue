@@ -91,14 +91,14 @@ export default {
     },
     methods: {
         ...mapActions([
-            "CHANGE_PRODUCT_SHOW_STATUS"
+            "SET_PRODUCT_SHOW_STATUS"
         ]),
         closeProduct(){
             // убираем лок с боди
             // let bodyElement = document.body
             // bodyElement.classList.toggle('')
             // закрываем карточку товара
-            this.CHANGE_PRODUCT_SHOW_STATUS(false)
+            this.SET_PRODUCT_SHOW_STATUS(false)
         },
         currentDateTime(date) {
             moment.locale("ru")

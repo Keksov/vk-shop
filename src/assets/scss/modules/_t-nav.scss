@@ -9,6 +9,7 @@
     color: #fff;
     padding: 15px 12px;
     overflow-y: auto;
+    z-index: $t-nav-content;
     &__close {
         display: flex;
         justify-content: center;

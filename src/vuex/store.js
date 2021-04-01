@@ -33,6 +33,7 @@ import products from './modules/products'
 import product from './modules/product'
 
 import categories from './modules/categories'
+import status from './modules/status'
 
 Vue.use(Vuex)
 
@@ -40,7 +41,8 @@ let store = new Vuex.Store({
     modules:{
         products,
         product,
-        categories
+        categories,
+        status
     }
 })
 
