@@ -61,6 +61,7 @@
                </button>
            </div>
            <img v-for="(photo, index) in GET_PRODUCT.photos"
+            loading="lazy"
             :src="photo"
             alt="photo"
             :key="index">
@@ -80,7 +81,8 @@ export default {
     },
     data(){
         return {
-            notifaction_text: 'Скопировано'
+            notifaction_text: 'Скопировано',
+            notifaction_count: 0
         }
     },
     computed:{
@@ -94,10 +96,6 @@ export default {
             "CHANGE_PRODUCT_SHOW_STATUS"
         ]),
         closeProduct(){
-            // убираем лок с боди
-            // let bodyElement = document.body
-            // bodyElement.classList.toggle('')
-            // закрываем карточку товара
             this.CHANGE_PRODUCT_SHOW_STATUS(false)
         },
         currentDateTime(date) {
@@ -106,11 +104,24 @@ export default {
         },
         // copy to clipboard2
         copySucceeded(){
-            this.$notify({
-                type: 'success', 
-                text: 'Скопировано',
-                duration: 1500
-            });
+            console.log('test now', this.notifaction_count)
+
+            if(this.notifaction_count == 0){
+                
+                this.$notify({
+                    type: 'success', 
+                    text: 'Скопировано',
+                    duration: 1500
+                })
+                this.notifaction_count = 1
+                let vm = this
+                setTimeout(function (){
+                    vm.notifaction_count = 0
+                    console.log('test count', this.notifaction_count)
+                }, 2500)
+            }
+            
+            
         },
         goToTop(){
             let productTop = document.getElementById('tCardContent')

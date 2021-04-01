@@ -26,7 +26,7 @@
                     <TNavContent />
                 </template>
             </transition>
-            <TNav />
+            <TNav @goHome="goToHome"/>
         </div>
         
         
@@ -114,9 +114,10 @@ export default {
         showPrev() {
             this.$refs.mainSlider.prev()
         },
-    },
-    mounted(){
-        this.GET_PRODUCT_SHOW_STATUS()        
+        goToHome() {
+            console.log('main go home')
+            this.$refs.mainSlider.goTo(0)
+        }
     }
 }
 </script>

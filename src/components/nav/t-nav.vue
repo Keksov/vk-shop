@@ -1,7 +1,7 @@
 <template>
     <nav class="t-nav-menu">
         <div class="t-nav-menu__list">
-            <button class="t-nav-menu__icon t-nav-menu__home">
+            <button class="t-nav-menu__icon t-nav-menu__home" @click="goToHomeBtn">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.5484 19H2.16129L1 17.8387V9.12903L5.64516 4.48387L8.54839 1.58065L9.12903 1H10.871L14.9355 5.06452L19 9.12903V9.46352V17.2581V17.8387L17.8387 19H17.5484Z" stroke="#FF0000" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
@@ -20,7 +20,7 @@
             </button>
 
             <button class="t-nav-menu__icon t-nav-menu__search"
-            @click="showCategory">
+            @click="showCategory" :class="{active: GET_CATEGORIES_SHOW}">
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="10" cy="10" r="9" stroke="#555555" stroke-width="2"/>
                 <path d="M17.7012 18C19.0872 19.3341 20.4733 20.6681 21.8593 22.0022" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,6 +53,10 @@ export default {
             } else {
                 this.CHANGE_CATEGORIES_SHOW_STATUS(true)                
             }            
+        },
+        goToHomeBtn(){
+            this.$emit('goHome')
+            console.log('nav go home')
         }
     },
     computed:{

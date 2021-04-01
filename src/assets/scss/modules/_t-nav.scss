@@ -69,13 +69,13 @@
     }
     &__icon {
         svg {
-            path {
+            path, circle {
                 stroke: $t_grey;
             }
         }
-        &:hover, &:focus, &.active {
+        &.active {
             svg {
-                path {
+                path, circle {
                     stroke: $t_red;
                 }
             }
