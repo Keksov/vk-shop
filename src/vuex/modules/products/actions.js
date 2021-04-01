@@ -15,3 +15,18 @@ export async function GET_AVAILABLE_PRODUCTS({commit}, products_params) {
         return error
     }
 }
+
+export async function GET_UNDER_ORDER_PRODUCTS({commit}, products_params) {
+    console.log(products_params)
+    try {
+        let concatedUrl = url_base +'src=a' + '&ps=5&category=' + '&p='+ products_params['page']
+        const uo_products = await axios(concatedUrl, {
+            method: "GET"
+        })
+        commit('SET_UNDER_ORDER_PRODUCTS', uo_products.data)
+        return uo_products
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}

@@ -4,10 +4,9 @@
             <VueSlickCarousel v-bind="settingsMainSLider" class="t-main-slider">
                 <div class="t-catalog__slide">
                    <tAvailable />
-                    
                 </div>
                 <div class="t-catalog__slide slide-2">
-                    test 2
+                    <tUnderOrder />
                 </div>
             </VueSlickCarousel>
         </div>
@@ -43,6 +42,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 // import TNav from './nav/t-nav'
 // import TNavContent from './nav/t-nav-content'
 import tAvailable from '@/components/products/t-available'
+import tUnderOrder from '@/components/products/t-under-order'
 
 import {mapGetters, mapActions} from 'vuex'
 
@@ -66,7 +66,8 @@ export default {
     },
     components: {
         VueSlickCarousel,
-        tAvailable
+        tAvailable,
+        tUnderOrder
         // TCatalogInStock,
         // TCatalogToOrder,
         // TCard,

@@ -4,11 +4,7 @@
         :class="{'one': product_data.photos.length === 1, 'two': product_data.photos.length === 2, 'three': product_data.photos.length === 3 }"
     >   
         <div class="t-catalog-item__main">
-           
-            
-                <img loading="lazy" :src="product_data.photos[0]" alt="">
-            
-            
+           <img loading="lazy" :src="product_data.photos[0]" alt="">
         </div>
         <div class="t-catalog-item__secondary">
             <img loading="lazy" :src="photo" 
@@ -55,13 +51,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-.photo-in-enter img {
-    opacity: 0;
-    transform: scale(.5);
-    &-active {
-        transition: all ease-in-out 0.3s;
-    }
-}
-</style>
