@@ -1,9 +1,9 @@
 <template>
     <div class="t-main">
         <div class="t-main__catalog">
-            <VueSlickCarousel v-bind="settingsMainSLider" class="t-main-slider" @beforeChange="beforeChange">
+            <VueSlickCarousel v-bind="settingsMainSLider" class="t-main-slider">
                 <div class="t-catalog__slide">
-                   test 1
+                   <tAvailable />
                     
                 </div>
                 <div class="t-catalog__slide slide-2">
@@ -15,7 +15,6 @@
             <transition name="slideUp">
                 
             </transition>
-            <t-nav />
         </div>
         
         <transition name="slideLeft">
@@ -43,6 +42,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 // import TCard from './t-card'
 // import TNav from './nav/t-nav'
 // import TNavContent from './nav/t-nav-content'
+import tAvailable from '@/components/products/t-available'
 
 import {mapGetters, mapActions} from 'vuex'
 
@@ -66,6 +66,7 @@ export default {
     },
     components: {
         VueSlickCarousel,
+        tAvailable
         // TCatalogInStock,
         // TCatalogToOrder,
         // TCard,
