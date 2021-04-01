@@ -1,7 +1,7 @@
 <template>
     <div class="t-main">
         <div class="t-main__catalog">
-            <VueSlickCarousel v-bind="settingsMainSLider" class="t-main-slider" @beforeChange="beforeChange">
+            <VueSlickCarousel v-bind="settings" @beforeChange="beforeChange">
                 <div class="t-catalog__slide">
                     <TCatalogInStock />
                     
@@ -54,7 +54,7 @@ export default {
     name: 't-main-wrapper',
     data(){
         return {
-            settingsMainSLider: 
+            settings: 
                 {
                     "dots": false,
                     "arrows": false,
@@ -104,9 +104,12 @@ export default {
 </script>
 
 <style lang="scss">
-.t-main-slider {
+.slick-slider {
     height: 100vh;
     overflow-y: hidden;
+}
+.t-main__catalog {
+    
 }
 .t-catalog__slide {
     overflow-y: auto;
@@ -120,6 +123,15 @@ export default {
     &.slide-2 {
         background-color: green;
     }
+}
+.t-catalog-test {
+    height: calc(100vh - 40px);
+    width: 100%;
+    color: brown;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 // transation
 .slideLeft-leave-active,
