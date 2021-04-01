@@ -1,0 +1,17 @@
+.t-main-slider {
+    height: 100vh;
+    overflow-y: hidden;
+}
+.t-catalog__slide {
+    overflow-y: auto;
+    height: calc(100vh - 40px);
+    width: 100%;
+    color: brown;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.slide-2 {
+        background-color: green;
+    }
+}

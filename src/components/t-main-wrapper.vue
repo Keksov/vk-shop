@@ -3,7 +3,7 @@
         <div class="t-main__catalog">
             <VueSlickCarousel v-bind="settingsMainSLider" class="t-main-slider" @beforeChange="beforeChange">
                 <div class="t-catalog__slide">
-                    <TCatalogInStock />
+                   test 1
                     
                 </div>
                 <div class="t-catalog__slide slide-2">
@@ -13,17 +13,13 @@
         </div>
         <div class="t-nav">
             <transition name="slideUp">
-                <template v-if="CATEGORIES_STATUS">
-                    <t-nav-content />
-                </template>
+                
             </transition>
             <t-nav />
         </div>
         
         <transition name="slideLeft">
-            <template v-if="PRODUCT_INFO_STATUS">
-                <t-card />
-            </template>
+          
         </transition>
 
         <notifications
@@ -41,12 +37,12 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
-import TCatalogInStock from '@/components/in-stock/t-catalog-in-stock'
+// import TCatalogInStock from '@/components/in-stock/t-catalog-in-stock'
 // import TCatalogToOrder from '@/components/to-order/t-catalog-to-order'
 
-import TCard from './t-card'
-import TNav from './nav/t-nav'
-import TNavContent from './nav/t-nav-content'
+// import TCard from './t-card'
+// import TNav from './nav/t-nav'
+// import TNavContent from './nav/t-nav-content'
 
 import {mapGetters, mapActions} from 'vuex'
 
@@ -70,77 +66,26 @@ export default {
     },
     components: {
         VueSlickCarousel,
-        TCatalogInStock,
+        // TCatalogInStock,
         // TCatalogToOrder,
-        TCard,
-        TNav,
-        TNavContent
+        // TCard,
+        // TNav,
+        // TNavContent
     },
     computed:{
         ...mapGetters([
-            "PRODUCT_INFO_STATUS",
-            "CATEGORIES_STATUS"            
+            // "PRODUCT_INFO_STATUS",
+            // "CATEGORIES_STATUS"            
         ])
     },
     methods: {
         ...mapActions([
-            "CHANGE_PRODUCT_INFO_STATUS"
+            // "CHANGE_PRODUCT_INFO_STATUS"
         ]),
-        edge(){
-            console.log('edge')
-        },
-        beforeChange(){
-            if(this.oldSlideIndex == 0){
-                console.log('000')
-            }
-            console.log('bef')
-        }
     },
     mounted(){
-        this.CHANGE_PRODUCT_INFO_STATUS()
+        // this.CHANGE_PRODUCT_INFO_STATUS()
         
     }
 }
 </script>
-
-<style lang="scss">
-.t-main-slider {
-    height: 100vh;
-    overflow-y: hidden;
-}
-.t-catalog__slide {
-    overflow-y: auto;
-    height: calc(100vh - 40px);
-    width: 100%;
-    color: brown;
-    background-color: beige;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &.slide-2 {
-        background-color: green;
-    }
-}
-// transation
-.slideLeft-leave-active,
-.slideLeft-enter-active {
-  transition: 1s;
-}
-.slideLeft-enter {
-  transform: translate(100%, 0);
-}
-.slideLeft-leave-to {
-  transform: translate(100%, 0);
-}
-
-.slideUp-leave-active,
-.slideUp-enter-active {
-  transition: 1s;
-}
-.slideUp-enter {
-  transform: translateY(100%);
-}
-.slideUp-leave-to {
-  transform: translateY(100%);
-}
-</style>

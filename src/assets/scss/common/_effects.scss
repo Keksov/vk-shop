@@ -16,3 +16,25 @@
 .slide-leave-to {
   transform: translate(100%, 0);
 }
+// left slide
+.slideLeft-leave-active,
+.slideLeft-enter-active {
+  transition: 1s;
+}
+.slideLeft-enter {
+  transform: translate(100%, 0);
+}
+.slideLeft-leave-to {
+  transform: translate(100%, 0);
+}
+// up slide
+.slideUp-leave-active,
+.slideUp-enter-active {
+  transition: 1s;
+}
+.slideUp-enter {
+  transform: translateY(100%);
+}
+.slideUp-leave-to {
+  transform: translateY(100%);
+}
