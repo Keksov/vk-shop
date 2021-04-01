@@ -1,11 +1,15 @@
 <template>
     <div class="t-main">
         <div class="t-main__catalog">
-            <VueSlickCarousel v-bind="settingsMainSLider" class="t-main-slider">
-                <div class="t-catalog__slide">
+            <VueSlickCarousel v-bind="settingsMainSLider"
+            ref="mainSlider"
+            class="t-main-slider">
+                <div v-touch:swipe.left="swipeLeftHandler"
+                    class="t-catalog__slide">
                    <tAvailable />
                 </div>
-                <div class="t-catalog__slide slide-2">
+                <div v-touch:swipe="swipeHandler"
+                    class="t-catalog__slide slide-2">
                     <tUnderOrder />
                 </div>
             </VueSlickCarousel>
@@ -60,7 +64,7 @@ export default {
                     "speed": 500,
                     "slidesToShow": 1,
                     "slidesToScroll": 1,
-                    "swipe": true
+                    "swipe": false
                 }
             }
         
@@ -85,6 +89,22 @@ export default {
         ...mapActions([
             // "CHANGE_PRODUCT_INFO_STATUS"
         ]),
+        swipeLeftHandler(){
+           this.showNext() 
+        },
+        swipeHandler(direction){
+            if(direction == 'left'){
+                this.showNext()
+            } else {
+                this.showPrev()
+            }
+        },
+        showNext() {
+            this.$refs.mainSlider.next()
+        },
+        showPrev() {
+            this.$refs.mainSlider.prev()
+        },
     },
     mounted(){
         // this.CHANGE_PRODUCT_INFO_STATUS()

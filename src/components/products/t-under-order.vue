@@ -39,7 +39,6 @@ export default {
             // load items
             this.product_params.page += 1
             this.GET_UNDER_ORDER_PRODUCTS(this.product_params)
-            console.log('params', this.product_params)
             this.busy = false
         }
     },

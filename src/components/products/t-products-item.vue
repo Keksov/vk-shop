@@ -1,6 +1,6 @@
 <template>
-    <div class="t-catalog-item " 
-        @click="showProductData"
+    <div class="t-catalog-item"
+        v-touch:tap="tapHandler"
         :class="{'one': product_data.photos.length === 1, 'two': product_data.photos.length === 2, 'three': product_data.photos.length === 3 }"
     >   
         <div class="t-catalog-item__main">
@@ -45,8 +45,12 @@ export default {
             // let bodyElement = document.body
             // bodyElement.classList.toggle('scroll-lock')
             // показываем карточку товара
-            this.GET_PRODUCT_INFO(this.product_data)
+            // this.GET_PRODUCT_INFO(this.product_data)
+            console.log('show product ')
         },
+        tapHandler(){
+            this.showProductData()
+        }
         
     }
 }
