@@ -32,6 +32,7 @@ export default {
     },
     methods: {
         ...mapActions([
+            "CLEAR_PRODUCTS",
             "GET_AVAILABLE_PRODUCTS"
         ]),
         loadMore: function() {
@@ -46,6 +47,7 @@ export default {
         ...mapGetters(["AVAILABLE_PRODUCTS"])
     },
     mounted(){
+        this.CLEAR_PRODUCTS()
         this.GET_AVAILABLE_PRODUCTS(this.product_params)
     }
 }

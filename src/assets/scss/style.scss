@@ -1,9 +1,14 @@
 @import "common/normalize";
 @import "common/base";
+@import "common/text";
+
 @import "modules/t-main";
 @import "modules/t-slider";
 @import "modules/t-nav";
 @import "modules/t-catalog";
+
+
 @import "modules/t-catalog-item";
+@import "modules/t-agents";
 @import "modules/t-card";
 @import "modules/t-notification";

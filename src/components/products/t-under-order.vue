@@ -32,6 +32,7 @@ export default {
     },
     methods: {
         ...mapActions([
+            "CLEAR_U_O_PRODUCTS",
             "GET_UNDER_ORDER_PRODUCTS"
         ]),
         loadMore: function() {
@@ -46,6 +47,7 @@ export default {
         ...mapGetters(["UNDER_ORDER_PRODUCTS"])
     },
     mounted(){
+        this.CLEAR_U_O_PRODUCTS()
         this.GET_UNDER_ORDER_PRODUCTS(this.product_params)
     }
 }

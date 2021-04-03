@@ -39,8 +39,8 @@
                <button class="t-card-actions__price" @click="goToTop">
                    {{ GET_PRODUCT.price }} р.
                    <span class="t-card-actions__price-plus">
-                       <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.5056 9.48H9.80956V16.032H7.54156V9.48H0.845562V7.356H7.54156V0.767999H9.80956V7.356H16.5056V9.48Z" fill="#FF0000"/>
+                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.18 9.48001H9.48402V16.032H7.21602V9.48001H0.52002V7.35601H7.21602V0.768005H9.48402V7.35601H16.18V9.48001Z" fill="#FF0000"/>
                         </svg>
                     </span>
                </button>
