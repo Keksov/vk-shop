@@ -5,7 +5,7 @@
             infinite-scroll-distance="10"
         >
             <t-agents-item
-            v-for="(agent, index_agent) in GET_AGENTS_AVAILABLE"
+            v-for="(agent, index_agent) in GET_AGENTS_UNDER_ORDER"
             :key="index_agent"
             :agent_data="agent"
             />
@@ -21,7 +21,7 @@ export default {
     data(){
         return {
             busy: false,
-            agents_params: {
+            agents_u_o_params: {
                 page: 0
             }
         }
@@ -31,24 +31,24 @@ export default {
     },    
     methods: {
         ...mapActions([
-            "CLEAR_AGENTS_AVAILABLE",
-            "SHOW_AGENTS_AVAILABLE"
+            "CLEAR_AGENTS_UNDER_ORDER",
+            "SHOW_AGENTS_UNDER_ORDER"
         ]),
         loadMore: function() {
             this.busy = true
             // load items
-            this.agents_params.page += 1
-            this.SHOW_AGENTS_AVAILABLE(this.agents_params)
+            this.agents_u_o_params.page += 1
+            this.SHOW_AGENTS_UNDER_ORDER(this.agents_u_o_params)
             this.busy = false
         }
     },
     computed:{
         ...mapGetters([
-            "GET_AGENTS_AVAILABLE"
+            "GET_AGENTS_UNDER_ORDER"
         ])
     },
     mounted(){
-        this.CLEAR_AGENTS_AVAILABLE().then(this.SHOW_AGENTS_AVAILABLE(this.agents_params))
+        this.CLEAR_AGENTS_UNDER_ORDER().then(this.SHOW_AGENTS_UNDER_ORDER(this.agents_u_o_params))
         
     }
 }

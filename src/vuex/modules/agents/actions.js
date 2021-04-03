@@ -8,10 +8,30 @@ export async function SHOW_AGENTS_AVAILABLE({commit}, agents_params) {
         const agents = await axios(concatedUrl, {
             method: "GET"
         })
-        console.log('agents ', agents.data)
         commit('SET_AGENTS_AVAILABLE', agents.data)
         return agents
     } catch (error) {
         return error
     }
+}
+
+export async function SHOW_AGENTS_UNDER_ORDER({commit}, agents_params) {
+    try {
+        let concatedUrl = url_base +'src=a' + this.getters.GET_CATEGORY + '&p='+ agents_params['page']
+        const agents_u_o = await axios(concatedUrl, {
+            method: "GET"
+        })
+        commit('SET_AGENTS_UNDER_ORDER', agents_u_o.data)
+        return agents_u_o
+    } catch (error) {
+        return error
+    }
+}
+
+export function CLEAR_AGENTS_AVAILABLE({commit}) {
+    commit('SET_CLEAR_AGENTS_AVAILABLE')
+}
+
+export function CLEAR_AGENTS_UNDER_ORDER({commit}) {
+    commit('SET_CLEAR_AGENTS_UNDER_ORDER')
 }

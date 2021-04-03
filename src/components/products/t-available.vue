@@ -47,8 +47,8 @@ export default {
         ...mapGetters(["AVAILABLE_PRODUCTS"])
     },
     mounted(){
-        this.CLEAR_PRODUCTS()
-        this.GET_AVAILABLE_PRODUCTS(this.product_params)
+        this.CLEAR_PRODUCTS().then(this.GET_AVAILABLE_PRODUCTS(this.product_params))
+        
     }
 }
 </script>

@@ -6,17 +6,17 @@
             ref="mainSlider"
             class="t-main-slider"
             >
-                <div v-touch:swipe.left="swipeLeftHandler"
-                    class="t-catalog__slide">
+                <div class="t-catalog__slide">
                    <tAvailable />
                 </div>
-                <div v-touch:swipe="swipeHandler"
-                    class="t-catalog__slide slide-2">
+                <div class="t-catalog__slide">
                     <tUnderOrder />
                 </div>
-                <div v-touch:swipe="swipeHandler"
-                    class="t-catalog__slide slide-2">
+                <div class="t-catalog__slide">
                     <tAgentsAvailable />
+                </div>
+                <div class="t-catalog__slide">
+                    <tAgentsUnderOrder />
                 </div>
             </VueSlickCarousel>
         </div>
@@ -58,6 +58,7 @@ import TNavContent from './nav/t-nav-content'
 import tAvailable from '@/components/products/t-available'
 import tUnderOrder from '@/components/products/t-under-order'
 import tAgentsAvailable from '@/components/agents/t-agents-available'
+import tAgentsUnderOrder from '@/components/agents/t-agents-under-order'
 
 import {mapGetters, mapActions} from 'vuex'
 
@@ -75,7 +76,7 @@ export default {
                     "speed": 500,
                     "slidesToShow": 1,
                     "slidesToScroll": 1,
-                    "swipe": false
+                    "swipe": true
             }
         }   
     },
@@ -84,6 +85,7 @@ export default {
         tAvailable,
         tUnderOrder,
         tAgentsAvailable,
+        tAgentsUnderOrder,
         TCard,
         TNav,
         TNavContent
