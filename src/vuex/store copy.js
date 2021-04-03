@@ -144,7 +144,7 @@ let store = new Vuex.Store({
                 console.log(error)
                 return error
             }
-        },
+        }, 
         async CHANGE_CATEGORY({commit}, in_category){
             commit('SET_CATEGORY', in_category)
             let concatedUrl = url_base + this.getters.CATEGORY + '&src=s' + '&p=0'
