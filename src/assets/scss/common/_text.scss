@@ -3,3 +3,8 @@
         color: $t_grey;
     }
 }
+.t-weight {
+    &__500 {
+        font-weight: 500;
+    }
+}

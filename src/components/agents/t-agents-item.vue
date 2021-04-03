@@ -71,7 +71,7 @@
                     </svg>
                 </div>
                 <div class="t-agents__social-place">
-                    город <span class="t-color__black">{{ agent_data.location}}</span>
+                    город <span class="t-color__black t-weight__500">{{ agent_data.location}}</span>
                 </div>
             </div>
 
@@ -84,7 +84,7 @@
                     </svg>
                 </div>
                 <div class="t-agents__social-location">
-                    <span class="t-color__black">{{ agent_data.counters.friends}}</span> друзей
+                    <span class="t-color__black t-weight__500">{{ agent_data.counters.friends}}</span> друзей
                 </div>
             </div>
 
@@ -97,7 +97,7 @@
                     </svg>
                 </div>
                 <div class="t-agents__social-place">
-                    <span class="t-color__black">{{ agent_data.counters.subscribers}}</span> подписчиков
+                    <span class="t-color__black t-weight__500">{{ agent_data.counters.subscribers}}</span> подписчиков
                 </div>
             </div>
 
@@ -112,7 +112,7 @@
                 </svg>
             </div>
             <div class="t-agents__insta-summ">
-               <span class="t-color__black"> {{ agent_data.items.length }} </span> фотографий
+               <span class="t-color__black t-weight__500"> {{ agent_data.items.length }} </span> фотографий
             </div>
 
         </div>
