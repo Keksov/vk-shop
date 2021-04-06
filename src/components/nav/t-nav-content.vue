@@ -56,8 +56,8 @@ export default {
             "CHANGE_CATEGORIES_SHOW_STATUS",
             "CHANGE_CATEGORY",
             "UPDATE_AVAILABLE_PRODUCTS",
-            "UPDATE_UNDER_ORDER_PRODUCTS"
-            // "GET_AVAILABLE_PRODUCTS"
+            "UPDATE_UNDER_ORDER_PRODUCTS",
+            // "UPDATE_SHOW_AGENTS_AVAILABLE"
         ]),
         closeCategory(){
             this.CHANGE_CATEGORIES_SHOW_STATUS(false)
@@ -66,6 +66,7 @@ export default {
             this.CHANGE_CATEGORY(category)
             this.UPDATE_AVAILABLE_PRODUCTS()
             this.UPDATE_UNDER_ORDER_PRODUCTS()
+            // this.UPDATE_SHOW_AGENTS_AVAILABLE()
             // this.GET_AVAILABLE_PRODUCTS(this.def_params)
         },
         sortBySearch(text){
