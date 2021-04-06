@@ -23,7 +23,7 @@
         <div class="t-nav">
             <transition name="slideUp">
                 <template v-if="GET_CATEGORIES_SHOW">
-                    <TNavContent />
+                    <TNavContent :allCategories = "GET_CATEGORIES" />
                 </template>
             </transition>
             <TNav @goHome="goToHome"/>
@@ -93,23 +93,15 @@ export default {
     computed:{
         ...mapGetters([
             "GET_PRODUCT_SHOW_STATUS",
-            "GET_CATEGORIES_SHOW"            
+            "GET_CATEGORIES_SHOW",
+            "GET_CATEGORIES"           
         ])
     },
     methods: {
         ...mapActions([
-            "CHANGE_PRODUCT_SHOW_STATUS"
+            "CHANGE_PRODUCT_SHOW_STATUS",
+            "SHOW_CATEGORIES"
         ]),
-        swipeLeftHandler(){
-           this.showNext() 
-        },
-        swipeHandler(direction){
-            if(direction == 'left'){
-                this.showNext()
-            } else {
-                this.showPrev()
-            }
-        },
         showNext() {
             this.$refs.mainSlider.next()
         },
@@ -117,9 +109,11 @@ export default {
             this.$refs.mainSlider.prev()
         },
         goToHome() {
-            console.log('main go home')
             this.$refs.mainSlider.goTo(0)
         }
+    },
+    mounted(){
+        this.SHOW_CATEGORIES()
     }
 }
 </script>

@@ -27,49 +27,51 @@
         </div>
         <div class="t-nav-content__categories-wrapper">
             <div class="t-nav-content__categories-item"
-            v-for="(category, index_category) in GET_CATEGORIES"
+            v-for="(category, index_category) in allCategories"
             :key="index_category"
             @click="sortByCategory(category.name)"
             >
-            {{ category.name }}
+            {{ category.name }}, {{ category.items_count}}
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapActions} from 'vuex'
 
 export default {
     name: 't-nav-content',
+    props: ['allCategories'],
     data(){
         return {
-            seatchText: ''
+            seatchText: '',
+            def_params: {
+                page: 0
+            }
         }
     },
     methods: {
         ...mapActions([
-            "SHOW_CATEGORIES",
             "CHANGE_CATEGORIES_SHOW_STATUS",
-            "CHANGE_CATEGORY"
+            "CHANGE_CATEGORY",
+            "UPDATE_AVAILABLE_PRODUCTS",
+            "UPDATE_UNDER_ORDER_PRODUCTS"
+            // "GET_AVAILABLE_PRODUCTS"
         ]),
         closeCategory(){
             this.CHANGE_CATEGORIES_SHOW_STATUS(false)
         },
         sortByCategory(category){
             this.CHANGE_CATEGORY(category)
+            this.UPDATE_AVAILABLE_PRODUCTS()
+            this.UPDATE_UNDER_ORDER_PRODUCTS()
+            // this.GET_AVAILABLE_PRODUCTS(this.def_params)
         },
         sortBySearch(text){
             this.CHANGE_CATEGORY(text)
+            this.UPDATE_AVAILABLE_PRODUCTS()
         }
-    },
-    computed:{
-        ...mapGetters([
-            "GET_CATEGORIES" 
-        ])
-    },
-    mounted(){
-        this.SHOW_CATEGORIES()
     }
 }
 </script>
