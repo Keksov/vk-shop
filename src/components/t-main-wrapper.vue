@@ -51,11 +51,11 @@
                 <template v-if="GET_CATEGORIES_SHOW">
                     <TNavSearchContent :allCategories = "GET_CATEGORIES" />
                 </template>
-                <template v-if="GET_CATEGORIES_SHOW">
-                    <TNavMainContent />
+                <template v-if="GET_REGIONS_SHOW_STATUS">
+                    <TNavMainContent :allRegions = "GET_REGIONS" />
                 </template>
             </transition>
-            <TNav @goHome="goToHome"/>
+            <TNav @goHome="goToHome" />
         </div>
         
         
@@ -138,14 +138,19 @@ export default {
     computed:{
         ...mapGetters([
             "GET_PRODUCT_SHOW_STATUS",
+
             "GET_CATEGORIES_SHOW",
-            "GET_CATEGORIES"           
+            "GET_CATEGORIES",
+            
+            "GET_REGIONS",
+            "GET_REGIONS_SHOW_STATUS"        
         ])
     },
     methods: {
         ...mapActions([
             "CHANGE_PRODUCT_SHOW_STATUS",
-            "SHOW_CATEGORIES"
+            "SHOW_CATEGORIES",
+            "SHOW_REGIONS"
         ]),
         showNext() {
             this.$refs.с1.next()
@@ -174,7 +179,8 @@ export default {
         }
     },
     mounted(){
-        this.SHOW_CATEGORIES()
+        this.SHOW_CATEGORIES(),
+        this.SHOW_REGIONS()
     }
 }
 </script>

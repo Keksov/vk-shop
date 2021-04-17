@@ -99,3 +99,80 @@
         margin-left: 5px;
     }
 }
+// regions
+.t-nav-main-content {   
+    @extend .t-nav-content;
+    background-color: #fff;
+    opacity: 1;
+    &__close {
+        @extend .t-nav-content__close;
+    }
+}
+.t-nav-main-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    &__link {
+        font-size: 24px;
+        line-height: 29px;
+        color: $t_grey;
+        text-decoration: none;
+    }
+
+    &__location {
+        display: flex;
+        align-items: center;
+    }
+    &__badge {
+        margin-right: 4px;
+    }
+    &__text {
+        font-size: 18px;
+        line-height: 22px;
+        color: $t_grey;
+    }
+}
+.t-nav-main-search {
+    @extend .t-nav-search;
+    margin-bottom: 10px;
+    &__input {
+        @extend .t-nav-search__input;
+        text-align: center;
+        font-size: 18px;
+        line-height: 22px;
+        color: rgba(85, 85, 85, 0.3);
+    }
+}
+.t-nav-main-regions {
+    
+    &__wrapper {
+        max-width: 90%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: start;
+    }
+    &__item {
+        font-size: 18px;
+        line-height: 22px;
+        color: $t_grey;
+        overflow-wrap: anywhere;
+    }
+    &__text {
+        margin: 0 10px 10px 0;
+        &.star {
+            position: relative;
+            padding-left: 10px;
+            &::before {
+                content: '\22C6';
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-size: 18px;
+                line-height: 22px;
+                color: #000;
+            }
+        }
+    }
+}

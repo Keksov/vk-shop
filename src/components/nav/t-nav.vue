@@ -20,14 +20,17 @@
             </button>
 
             <button class="t-nav-menu__icon t-nav-menu__search"
-            @click="showCategory" :class="{active: GET_CATEGORIES_SHOW}">
+                @click="showCategory" :class="{active: GET_CATEGORIES_SHOW}"
+            >
                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="10" cy="10" r="9" stroke="#555555" stroke-width="2"/>
                 <path d="M17.7012 18C19.0872 19.3341 20.4733 20.6681 21.8593 22.0022" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
             
-            <button class="t-nav-menu__icon t-nav-menu__burger">
+            <button class="t-nav-menu__icon t-nav-menu__burger"
+                @click="showMain" :class="{active: GET_REGIONS_SHOW_STATUS}"
+            >
                 <svg width="39" height="20" viewBox="0 0 39 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.45898 19C16.0329 19.0004 27.1164 19.0002 37.8589 19.0002" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8.15918 10C17.8519 10.0004 28.0119 10.0002 37.8592 10.0002" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -45,6 +48,7 @@ export default {
     methods: {
         ...mapActions([
             "CHANGE_CATEGORIES_SHOW_STATUS",
+            "CHANGE_REGIONS_SHOW_STATUS",
             "CHANGE_PRODUCT_INFO_STATUS"
         ]),
         showCategory() {
@@ -52,6 +56,13 @@ export default {
                 this.CHANGE_CATEGORIES_SHOW_STATUS(false)
             } else {
                 this.CHANGE_CATEGORIES_SHOW_STATUS(true)                
+            }            
+        },
+        showMain() {
+            if(this.GET_REGIONS_SHOW_STATUS) {
+                this.CHANGE_REGIONS_SHOW_STATUS(false)
+            } else {
+                this.CHANGE_REGIONS_SHOW_STATUS(true)                
             }            
         },
         goToHomeBtn(){
@@ -62,6 +73,7 @@ export default {
     computed:{
         ...mapGetters([
             "GET_CATEGORIES_SHOW",
+            "GET_REGIONS_SHOW_STATUS",
             "PRODUCT_INFO_STATUS"
         ])
     }

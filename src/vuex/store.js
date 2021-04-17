@@ -35,7 +35,12 @@ import product from './modules/product'
 import agents from './modules/agents'
 
 import categories from './modules/categories'
+
+import regions from './modules/regions'
+
 import status from './modules/status'
+
+
 
 Vue.use(Vuex)
 
@@ -45,6 +50,7 @@ let store = new Vuex.Store({
         agents,
         product,
         categories,
+        regions,
         status
     }
 })

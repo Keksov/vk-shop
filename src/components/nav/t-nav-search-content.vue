@@ -11,9 +11,9 @@
             </button>
         </div>
         <div class="t-nav-content__search-wrapper">
-            <form class="t-nav-search" @submit.prevent="sortBySearch(seatchText)">
-                <input type="search" v-model="seatchText" placeholder="Поиск" class="t-nav-search__input">
-                <button type="submit" class="t-nav-search__submit" @click="sortBySearch(seatchText)">
+            <form class="t-nav-search" @submit.prevent="sortBySearch(searchText)">
+                <input type="search" v-model="searchText" placeholder="Поиск" class="t-nav-search__input">
+                <button type="submit" class="t-nav-search__submit" @click="sortBySearch(searchText)">
                     <i>
                     <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="10" r="9" stroke="#555555" stroke-width="2"/>
@@ -22,8 +22,6 @@
                     </i>
                 </button>
             </form>
-
-            
         </div>
         <div class="t-nav-content__categories-wrapper">
             <div class="t-nav-content__categories-item"
@@ -45,7 +43,7 @@ export default {
     props: ['allCategories'],
     data(){
         return {
-            seatchText: '',
+            searchText: '',
             def_params: {
                 page: 0
             }
