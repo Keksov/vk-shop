@@ -4,12 +4,16 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 40px;
-    width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    width: 320px;
     height: 30px;
     border-radius: 10px;
     &.success {
-        background-color: green;
-        
+        background-color: green;        
         color: #fff;
+    }
+    @media (max-width: 767px) {
+        width: 100%;
     }
 }
