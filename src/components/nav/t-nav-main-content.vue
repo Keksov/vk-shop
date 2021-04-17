@@ -115,9 +115,9 @@ export default {
             if(this.regionText){
                 this.filterResults()
                 this.isOpen = true
-            }
-            
-        }
+            }            
+        },
+        
     }
 }
 </script>

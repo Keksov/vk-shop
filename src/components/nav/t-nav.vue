@@ -67,7 +67,6 @@ export default {
         },
         goToHomeBtn(){
             this.$emit('goHome')
-            console.log('nav go home')
         }
     },
     computed:{

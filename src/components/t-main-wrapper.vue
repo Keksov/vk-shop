@@ -142,6 +142,7 @@ export default {
             "GET_CATEGORIES_SHOW",
             "GET_CATEGORIES",
             
+            "GET_REGION",
             "GET_REGIONS",
             "GET_REGIONS_SHOW_STATUS"        
         ])
@@ -181,6 +182,14 @@ export default {
     mounted(){
         this.SHOW_CATEGORIES(),
         this.SHOW_REGIONS()
+    },
+    watch: {
+        GET_REGION() { 
+            if(this.GET_REGION != ''){
+                this.$refs.c1.goTo(3)
+                this.$refs.c2.goTo(3)
+            }
+         }
     }
 }
 </script>
