@@ -15,3 +15,31 @@
         background-color: green;
     }
 }
+.tMainNav {
+    .slick-slide.slick-current {
+        .t-nav-slider {
+            border-radius: 13px;
+            border: 1px solid #FF0000;
+        }
+    }
+    .slick-list {
+        padding: 0!important;
+    }
+}
+.t-nav-slider {
+    &__content {
+        height: 40px;
+        border-radius: 13px;
+        background-color: #fff;
+        text-align: center;
+        // border: 1px solid #FF0000;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $t_grey;
+        transition: all 0.35s ease-in-out;
+    }
+}

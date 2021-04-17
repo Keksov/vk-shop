@@ -1,10 +1,36 @@
 <template>
     <div class="t-main">
         <div class="t-main__catalog">
+            <VueNavSlickCarousel
+                ref="c2"
+                :asNavFor="$refs.c1"
+                :focusOnSelect="true"
+                v-bind="settingsNavSlider"
+                class="tMainNav"
+                @beforeChange="navBeforeChange"
+            >
+                <div class="t-nav-slider">
+                    <div class="t-nav-slider__content">Товары наличие</div>
+                </div>
+                <div class="t-nav-slider">
+                    <div class="t-nav-slider__content">Товары заказ</div>
+                </div>
+                <div class="t-nav-slider">
+                    <div class="t-nav-slider__content">Агенты наличие</div>
+                </div>
+                <div class="t-nav-slider">
+                    <div class="t-nav-slider__content">Агенты заказ</div>
+                </div>
+            </VueNavSlickCarousel>
+
             <VueSlickCarousel 
-            v-bind="settingsMainSLider"
-            ref="mainSlider"
-            class="t-main-slider"
+                ref="c1"
+                :asNavFor="$refs.c2"
+                :slidesToShow="1"
+                :focusOnSelect="true"
+                v-bind="settingsMainSLider"
+                class="tMainSlider"
+                @beforeChange="mainBeforeChange"
             >
                 <div class="t-catalog__slide">
                    <tAvailable />
@@ -47,6 +73,7 @@
 <script>
 // slick
 import VueSlickCarousel from 'vue-slick-carousel'
+import VueNavSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -66,11 +93,23 @@ export default {
     name: 't-main-wrapper',
     data(){
         return {
+            settingsNavSlider: {
+                "centerMode": true,
+                "centerPadding": "20px",
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "infinite": false,
+                "swipe": true,
+                "dots": false,
+                "arrows": false,
+                "asNavFor": this.$refs.c1
+            },
             settingsMainSLider: 
                 {
+                    "asNavFor": this.$refs.c2,
                     "dots": false,
                     "arrows": false,
-                    "dotsClass": "slick-dots custom-dot-class",
+                    // "dotsClass": "slick-dots custom-dot-class",
                     "edgeFriction": 0.35,
                     "infinite": false,
                     "speed": 500,
@@ -81,6 +120,7 @@ export default {
         }   
     },
     components: {
+        VueNavSlickCarousel,
         VueSlickCarousel,
         tAvailable,
         tUnderOrder,
@@ -103,13 +143,30 @@ export default {
             "SHOW_CATEGORIES"
         ]),
         showNext() {
-            this.$refs.mainSlider.next()
+            this.$refs.с1.next()
         },
         showPrev() {
-            this.$refs.mainSlider.prev()
+            this.$refs.с1.prev()
         },
         goToHome() {
-            this.$refs.mainSlider.goTo(0)
+            this.$refs.c1.goTo(0)
+        },
+        navBeforeChange(currentSlide, nextSlide) {
+            if(currentSlide < nextSlide && currentSlide != nextSlide){
+                this.$refs.c1.next()
+            } 
+            if(currentSlide > nextSlide && currentSlide != nextSlide) {
+                this.$refs.c1.prev()
+            }
+        }
+        ,
+        mainBeforeChange(currentSlide, nextSlide) {
+            if(currentSlide < nextSlide && currentSlide != nextSlide){
+                this.$refs.c2.next()
+            } 
+            if(currentSlide > nextSlide && currentSlide != nextSlide) {
+                this.$refs.c2.prev()
+            }
         }
     },
     mounted(){
@@ -119,6 +176,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 // slide effect
 .slide-leave-active,
 .slide-enter-active {
