@@ -3,3 +3,17 @@
     max-width: 425px;
     background-color: #000;
 }
+.t-agents-catalog.empty {
+    height: 100%;
+    div {
+        &:first-child {
+            height: 100%;
+        }
+    }
+    .t-agents-item {        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}

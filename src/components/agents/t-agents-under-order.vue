@@ -1,14 +1,22 @@
 <template>
-    <div class="t-agents-catalog">
+    <div class="t-agents-catalog"
+    :class="{empty: GET_AGENTS_UNDER_ORDER.length == 0}"
+    >
         <div v-infinite-scroll="loadMore" 
             infinite-scroll-disabled="busy" 
             infinite-scroll-distance="10"
         >
-            <t-agents-item
-            v-for="(agent, index_agent) in GET_AGENTS_UNDER_ORDER"
-            :key="index_agent"
-            :agent_data="agent"
-            />
+            <template v-if="GET_AGENTS_UNDER_ORDER.length != 0">
+                <t-agents-item
+                v-for="(agent, index_agent) in GET_AGENTS_UNDER_ORDER"
+                :key="index_agent"
+                :agent_data="agent"
+                />
+            </template>
+            
+            <template v-else >
+                <div class="t-agents-item">Агенты в данном регионе не найдены</div>
+            </template>
         </div>
     </div>
 </template>
