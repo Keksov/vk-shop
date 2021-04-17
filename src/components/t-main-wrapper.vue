@@ -3,8 +3,6 @@
         <div class="t-main__catalog">
             <VueNavSlickCarousel
                 ref="c2"
-                :asNavFor="$refs.c1"
-                :focusOnSelect="true"
                 v-bind="settingsNavSlider"
                 class="tMainNav"
                 @beforeChange="navBeforeChange"
@@ -25,9 +23,6 @@
 
             <VueSlickCarousel 
                 ref="c1"
-                :asNavFor="$refs.c2"
-                :slidesToShow="1"
-                :focusOnSelect="true"
                 v-bind="settingsMainSLider"
                 class="tMainSlider"
                 @beforeChange="mainBeforeChange"
@@ -98,28 +93,82 @@ export default {
     data(){
         return {
             settingsNavSlider: {
-                "centerMode": true,
-                "centerPadding": "20px",
-                "slidesToShow": 1,
-                "slidesToScroll": 1,
-                "infinite": false,
-                "swipe": true,
-                "dots": false,
-                "arrows": false,
-                "asNavFor": this.$refs.c1
+                
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: false,
+                swipe: false,
+                dots: false,
+                arrows: false,
+                asNavFor: this.$refs.c1,
+                responsive: [
+                    {
+                        "breakpoint": 1024,
+                        "settings":{                       
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            swipe: true
+                        }
+                    },
+                    {
+                        "breakpoint": 768,
+                        "settings":{
+                            
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                            swipe: true
+                        },
+                    },
+                    {
+                        "breakpoint": 425,
+                        "settings":{
+                            centerMode: true,
+                            centerPadding: "20px",
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            swipe: true
+                        },
+                    }
+                ]
             },
             settingsMainSLider: 
                 {
-                    "asNavFor": this.$refs.c2,
-                    "dots": false,
-                    "arrows": false,
+                    asNavFor: this.$refs.c2,
+                    dots: false,
+                    arrows: false,
                     // "dotsClass": "slick-dots custom-dot-class",
-                    "edgeFriction": 0.35,
-                    "infinite": false,
-                    "speed": 500,
-                    "slidesToShow": 1,
-                    "slidesToScroll": 1,
-                    "swipe": true
+                    edgeFriction: 0.35,
+                    infinite: false,
+                    speed: 500,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    swipe: false,
+                    responsive: [
+                        {
+                            "breakpoint": 1025,
+                            "settings":{
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                swipe: true
+                            }
+                        },
+                        {
+                            "breakpoint": 768,
+                            "settings":{
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                swipe: true
+                            },
+                        },
+                        {
+                            "breakpoint": 425,
+                            "settings":{
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                swipe: true
+                            },
+                        }
+                    ]
             }
         }   
     },

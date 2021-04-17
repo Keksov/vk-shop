@@ -1,7 +1,12 @@
 .t-catalog, .t-agents-catalog {
     min-width: 320px;
-    max-width: 425px;
     background-color: #000;
+    @media (min-width: 1024px) {
+        max-width: 320px;
+    }
+    @media (max-width: 767px) {
+        max-width: 767px;
+    }
 }
 .t-agents-catalog.empty {
     height: 100%;

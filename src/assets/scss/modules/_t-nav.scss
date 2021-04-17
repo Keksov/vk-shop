@@ -1,6 +1,6 @@
 .t-nav-content{
     position: fixed;
-    top: 0;
+    top: 40px;
     left: 0;
     height: calc(100vh - 40px);
     width: 100%;
@@ -14,6 +14,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    @media (max-width: 767px) {
+        top: 0;
     }
 }
 .t-nav-content__categories {
@@ -50,9 +53,9 @@
 
 .t-nav-menu {
     height: 40px;
-    width: 100%;
+    width: 320px;
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     z-index: $nav;
     &__list {
@@ -80,6 +83,11 @@
                 }
             }
         }
+    }
+
+    @media (max-width: 767px) {
+        bottom: 0;
+        width: 100%;
     }
 }
 
@@ -201,5 +209,16 @@
                 color: #000;
             }
         }
+    }
+}
+
+.tMainNav {
+    box-shadow: 0px 4px 24px rgb(0 0 0 / 25%);
+    z-index: $t-nav-slider;
+    @media (min-width: 768px) {
+        width: 320px;
+        margin-right: 0;
+        margin-left: auto;
+        width: calc(100% - 320px);
     }
 }
