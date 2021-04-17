@@ -28,7 +28,31 @@
 
         <div class="t-nav-main-search__wrapper">
             <form class="t-nav-main-search" @submit.prevent="sortByRegionSearch(regionText)">
-                <input class="t-nav-main-search__input" type="search" v-model="regionText" placeholder="введите ваш город" >
+                <input class="t-nav-main-search__input"
+                    type="search" v-model="regionText"
+                    @input="onChange"
+                    placeholder="введите ваш город"
+                >
+               
+                <ul
+                    v-show="isOpen"
+                    class="autocomplete-results"
+                    >
+                     <template v-if="results.length != 0">
+                        <li
+                            v-for="(result, i) in results"
+                            :key="i"
+                            @click="sortByRegionSearch(result)"
+                            class="autocomplete-result"
+                        >
+                            {{ result.name }} - {{ result.counter}}                            
+                        </li>
+                    </template>
+                    <template v-else >
+                        <li>Подходящих городов не найдено</li>
+                    </template>
+                </ul>
+                
             </form>
         </div>
 
@@ -56,7 +80,10 @@ export default {
     props:['allRegions'],
     data(){
         return {
-            regionText: ''
+            regionText: '',
+            results: [],
+            isOpen: false,
+
         }
     },
     methods: {
@@ -67,7 +94,18 @@ export default {
             this.CHANGE_REGIONS_SHOW_STATUS(false)
         },
         sortByRegionSearch(region){
-            console.log('region search', region)
+            this.regionText = region.name;
+            this.isOpen = false;
+        },
+        filterResults(){
+            this.results = this.allRegions.filter(item => item.name.toLowerCase().indexOf(this.regionText.toLowerCase()) > -1);
+        },
+        onChange(){
+            if(this.regionText){
+                this.filterResults();
+                this.isOpen = true;
+            }
+            
         }
     }
 }
