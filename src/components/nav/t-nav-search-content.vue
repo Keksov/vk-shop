@@ -41,7 +41,7 @@
 import { mapActions} from 'vuex'
 
 export default {
-    name: 't-nav-content',
+    name: 't-nav-search-content',
     props: ['allCategories'],
     data(){
         return {

@@ -49,7 +49,10 @@
         <div class="t-nav">
             <transition name="slideUp">
                 <template v-if="GET_CATEGORIES_SHOW">
-                    <TNavContent :allCategories = "GET_CATEGORIES" />
+                    <TNavSearchContent :allCategories = "GET_CATEGORIES" />
+                </template>
+                <template v-if="GET_CATEGORIES_SHOW">
+                    <TNavMainContent />
                 </template>
             </transition>
             <TNav @goHome="goToHome"/>
@@ -81,7 +84,8 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 import TCard from './t-card'
 import TNav from './nav/t-nav'
-import TNavContent from './nav/t-nav-content'
+import TNavSearchContent from './nav/t-nav-search-content'
+import TNavMainContent from './nav/t-nav-main-content'
 import tAvailable from '@/components/products/t-available'
 import tUnderOrder from '@/components/products/t-under-order'
 import tAgentsAvailable from '@/components/agents/t-agents-available'
@@ -128,7 +132,8 @@ export default {
         tAgentsUnderOrder,
         TCard,
         TNav,
-        TNavContent
+        TNavSearchContent,
+        TNavMainContent
     },
     computed:{
         ...mapGetters([
@@ -158,8 +163,7 @@ export default {
             if(currentSlide > nextSlide && currentSlide != nextSlide) {
                 this.$refs.c1.prev()
             }
-        }
-        ,
+        },
         mainBeforeChange(currentSlide, nextSlide) {
             if(currentSlide < nextSlide && currentSlide != nextSlide){
                 this.$refs.c2.next()
