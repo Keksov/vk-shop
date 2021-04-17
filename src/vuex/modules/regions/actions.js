@@ -6,6 +6,6 @@ export async function SHOW_REGIONS({commit}) {
     commit('SET_REGIONS', regions_list.data)
 }
 
-export function CHANGE_REGIONY({commit}, new_region) {
+export function CHANGE_REGION({commit}, new_region) {
     commit('SET_NEW_REGION', new_region)
 }

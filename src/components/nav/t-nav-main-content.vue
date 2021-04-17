@@ -88,22 +88,30 @@ export default {
     },
     methods: {
         ...mapActions([
-            "CHANGE_REGIONS_SHOW_STATUS"
+            "CHANGE_REGIONS_SHOW_STATUS",
+            "CHANGE_REGION",
+            "UPDATE_SHOW_AGENTS_AVAILABLE"
         ]),
         closeMain(){
             this.CHANGE_REGIONS_SHOW_STATUS(false)
         },
         sortByRegionSearch(region){
-            this.regionText = region.name;
-            this.isOpen = false;
+            this.regionText = region
+            this.isOpen = false
+            // меняем карегорию
+            this.CHANGE_REGIONS_SHOW_STATUS(false)
+            this.CHANGE_REGION(this.regionText)
+            // обновляем продавцов
+            this.UPDATE_SHOW_AGENTS_AVAILABLE()
         },
+        // autocomplete
         filterResults(){
-            this.results = this.allRegions.filter(item => item.name.toLowerCase().indexOf(this.regionText.toLowerCase()) > -1);
+            this.results = this.allRegions.filter(item => item.name.toLowerCase().indexOf(this.regionText.toLowerCase()) > -1)
         },
         onChange(){
             if(this.regionText){
-                this.filterResults();
-                this.isOpen = true;
+                this.filterResults()
+                this.isOpen = true
             }
             
         }
