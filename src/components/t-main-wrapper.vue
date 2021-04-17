@@ -103,9 +103,9 @@ export default {
                 asNavFor: this.$refs.c1,
                 responsive: [
                     {
-                        "breakpoint": 1024,
+                        "breakpoint": 1025,
                         "settings":{                       
-                            slidesToShow: 2,
+                            slidesToShow: 3,
                             slidesToScroll: 1,
                             swipe: true
                         }

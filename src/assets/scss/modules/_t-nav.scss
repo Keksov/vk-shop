@@ -17,6 +17,7 @@
     }
     @media (max-width: 767px) {
         top: 0;
+        z-index: $t-nav-slider;
     }
 }
 .t-nav-content__categories {
@@ -186,8 +187,13 @@
         max-width: 90%;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(4, auto);
         justify-content: start;
+        overflow-y: auto;
+        height: 80%;
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(2, auto);
+        }
     }
     &__item {
         font-size: 18px;
