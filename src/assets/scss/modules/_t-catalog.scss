@@ -1,9 +1,11 @@
 .t-catalog, .t-agents-catalog {
     min-width: 320px;
+    max-width: 320px;
     background-color: #000;
-    @media (min-width: 1024px) {
-        max-width: 320px;
-    }
+    &::-webkit-scrollbar {
+        width: 0;
+      }
+    
     @media (max-width: 767px) {
         max-width: 767px;
     }

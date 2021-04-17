@@ -101,6 +101,7 @@ export default {
             this.isOpen = false
             // меняем карегорию
             // this.CHANGE_REGIONS_SHOW_STATUS(false)
+            console.log('test region', this.regionText)
             this.CHANGE_REGION(this.regionText)
 
             // обновляем продавцов

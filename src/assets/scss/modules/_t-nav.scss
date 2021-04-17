@@ -39,6 +39,11 @@
         border-radius: 13px;
         color: $t_grey;
         margin: 6px;
+        cursor: pointer;
+        transition: all 0.35s ease-in-out;
+        &:hover, &:focus {
+            color: $t_blue;
+        }
         &:nth-child(1n) {
             width: calc(50% - 12px);
             
@@ -200,6 +205,11 @@
         line-height: 22px;
         color: $t_grey;
         overflow-wrap: anywhere;
+        cursor: pointer;
+        transition: all 0.35s ease-in-out;
+        &:hover, &:focus {
+            color: $t_blue;
+        }
     }
     &__text {
         margin: 0 10px 10px 0;
