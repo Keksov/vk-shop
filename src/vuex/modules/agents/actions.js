@@ -2,9 +2,10 @@ import axios from 'axios'
 
 const url_base = 'https://bot.ividos.pro:8443/api/merchants.php?ps=5&'
 
+// параметр region для s Агенты в наличии не применяется
 export async function SHOW_AGENTS_AVAILABLE({commit}, agents_params) {
     try {
-        let concatedUrl = url_base +'src=s&r=' + this.getters.GET_REGION + '&p='+ agents_params['page']
+        let concatedUrl = url_base +'src=s&p='+ agents_params['page']
         const agents = await axios.get(concatedUrl)
         commit('SET_AGENTS_AVAILABLE', agents.data)
         return agents
@@ -15,7 +16,7 @@ export async function SHOW_AGENTS_AVAILABLE({commit}, agents_params) {
 
 export async function SHOW_AGENTS_UNDER_ORDER({commit}, agents_params) {
     try {
-        let concatedUrl = url_base +'src=a' + this.getters.GET_CATEGORY + '&p='+ agents_params['page']
+        let concatedUrl = url_base +'src=a&r=' + this.getters.GET_REGION + '&p='+ agents_params['page']
         const agents_u_o = await axios(concatedUrl, {
             method: "GET"
         })
@@ -33,7 +34,22 @@ export async function UPDATE_SHOW_AGENTS_AVAILABLE({commit}) {
         const agents = await axios.get(concatedUrl)
         commit('SET_CLEAR_AGENTS_AVAILABLE')
         commit('SET_AGENTS_AVAILABLE', agents.data)
-        commit('SET_CATEGORIES_SHOW_STATUS', false)
+        commit('SET_REGIONS_SHOW_STATUS', false)
+        return agents
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
+export async function UPDATE_SHOW_AGENTS_UNDER_ORDER({commit}) {
+    try {
+        
+        let concatedUrl = url_base +'src=a&r=' + this.getters.GET_REGION + '&p=0'
+        const agents = await axios.get(concatedUrl)
+        commit('SET_CLEAR_AGENTS_UNDER_ORDER')
+        commit('SET_AGENTS_UNDER_ORDER', agents.data)
+        commit('SET_REGIONS_SHOW_STATUS', false)
         return agents
     } catch (error) {
         console.log(error)

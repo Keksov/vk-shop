@@ -90,7 +90,8 @@ export default {
         ...mapActions([
             "CHANGE_REGIONS_SHOW_STATUS",
             "CHANGE_REGION",
-            "UPDATE_SHOW_AGENTS_AVAILABLE"
+            "UPDATE_SHOW_AGENTS_AVAILABLE",
+            "UPDATE_SHOW_AGENTS_UNDER_ORDER"
         ]),
         closeMain(){
             this.CHANGE_REGIONS_SHOW_STATUS(false)
@@ -99,10 +100,12 @@ export default {
             this.regionText = region
             this.isOpen = false
             // меняем карегорию
-            this.CHANGE_REGIONS_SHOW_STATUS(false)
+            // this.CHANGE_REGIONS_SHOW_STATUS(false)
             this.CHANGE_REGION(this.regionText)
+
             // обновляем продавцов
-            this.UPDATE_SHOW_AGENTS_AVAILABLE()
+            // this.UPDATE_SHOW_AGENTS_AVAILABLE() // - для available regions не применяется
+            this.UPDATE_SHOW_AGENTS_UNDER_ORDER()
         },
         // autocomplete
         filterResults(){
