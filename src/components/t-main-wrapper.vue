@@ -8,19 +8,24 @@
                 @beforeChange="navBeforeChange"
             >
                 <div class="t-nav-slider">
-                    <div class="t-nav-slider__content">Товары наличие</div>
+                    <div class="t-nav-slider__content"
+                    @click="goToSlide(0)">Товары наличие</div>
                 </div>
                 
                 <div class="t-nav-slider">
-                    <div class="t-nav-slider__content">Агенты наличие</div>
+                    <div class="t-nav-slider__content"
+                    @click="goToSlide(1)"
+                    >Агенты наличие</div>
                 </div>
 
                 <div class="t-nav-slider">
-                    <div class="t-nav-slider__content">Товары заказ</div>
+                    <div class="t-nav-slider__content"
+                    @click="goToSlide(2)">Товары заказ</div>
                 </div>
 
                 <div class="t-nav-slider">
-                    <div class="t-nav-slider__content">Агенты заказ</div>
+                    <div class="t-nav-slider__content"
+                    @click="goToSlide(3)">Агенты заказ</div>
                 </div>
             </VueNavSlickCarousel>
 
@@ -58,7 +63,7 @@
                     <TNavMainContent :allRegions = "GET_REGIONS" />
                 </template>
             </transition>
-            <TNav @goHome="goToHome" />
+            <TNav @goHome="goToSlide(0)" />
         </div>
         
         
@@ -220,8 +225,9 @@ export default {
         showPrev() {
             this.$refs.с1.prev()
         },
-        goToHome() {
-            this.$refs.c1.goTo(0)
+        goToSlide(slideNum){
+            this.$refs.c1.goTo(slideNum)
+            this.$refs.c2.goTo(slideNum)
         },
         navBeforeChange(currentSlide, nextSlide) {
              
@@ -247,12 +253,14 @@ export default {
             
         },
         mainBeforeChange(currentSlide, nextSlide) {
-            if(currentSlide < nextSlide && currentSlide != nextSlide){
-                this.$refs.c2.next()
-            } 
-            if(currentSlide > nextSlide && currentSlide != nextSlide) {
-                this.$refs.c2.prev()
-            }
+            console.log('cur main', currentSlide, nextSlide)
+            this.$refs.c2.goTo(nextSlide)
+            // if(currentSlide < nextSlide && currentSlide != nextSlide){
+            //     this.$refs.c2.next()
+            // } 
+            // if(currentSlide > nextSlide && currentSlide != nextSlide) {
+            //     this.$refs.c2.prev()
+            // }
         }
     },
     mounted(){

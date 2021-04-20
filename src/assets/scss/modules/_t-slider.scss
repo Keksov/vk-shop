@@ -48,12 +48,14 @@
 .tMainSlider {
    
     .slick-list {
-        .slick-slide {
-            opacity: 0.4;
-            transition: all 0.35s ease-in-out;
-        }
-        .slick-active{
-            opacity: 1;            
+        @media (max-width: 768px) {
+            .slick-slide {
+                opacity: 0.4;
+                transition: all 0.35s ease-in-out;
+            }
+            .slick-active{
+                opacity: 1;            
+            }
         }
     }
   
