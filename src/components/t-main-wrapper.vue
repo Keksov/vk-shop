@@ -152,6 +152,8 @@ export default {
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     swipe: false,
+                    useCSS: true,
+                    lazyLoad: true,
                     responsive: [
                         {
                             "breakpoint": 1025,
