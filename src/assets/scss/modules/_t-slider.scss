@@ -18,20 +18,23 @@
 .tMainNav {
 
     .slick-slide {
-        margin-left:5px;
+        @media (max-width: 767px) {
+            margin-left:5px;
+        }
         .t-nav-slider {
             border: 0.5px solid rgba(85, 85, 85, 0.15);
             border-radius: 13px;
         }
     }
     .slick-slide.slick-active {
-        .t-nav-slider {
-            
+        .t-nav-slider {            
             border: 1px solid #FF0000;
         }
     }
     .slick-list {
-        margin-left: -5px;
+        @media (max-width: 767px) {
+            margin-left: -5px;
+        }
         padding: 0!important;
     }
 }
@@ -61,8 +64,8 @@
     .slick-list {
         @media (max-width: 768px) {
             .slick-slide {
-                opacity: 0.4;
-                transition: all 0.35s ease-in-out;
+                opacity: 0.3;
+                transition: all 0.75s ease-in-out;
             }
             .slick-active{
                 opacity: 1;            

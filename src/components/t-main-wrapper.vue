@@ -1,6 +1,9 @@
 <template>
     <div class="t-main">
-        <div class="t-main__catalog">
+        <div class="t-main__spinner">
+            <cube-spin></cube-spin>
+        </div>
+        <div :class="{t_visible:isLoaded}" class="t-main__catalog">
             <VueNavSlickCarousel
                 ref="c2"
                 v-bind="settingsNavSlider"
@@ -88,7 +91,8 @@ import VueNavSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-
+// spinners
+import CubeSpin from 'vue-loading-spinner/src/components/Circle2'
 
 import TCard from './t-card'
 import TNav from './nav/t-nav'
@@ -159,8 +163,6 @@ export default {
                     slidesToShow: 4,
                     slidesToScroll: 1,
                     swipe: false,
-                    useCSS: true,
-                    lazyLoad: true,
                     responsive: [
                         {
                             "breakpoint": 1025,
@@ -188,10 +190,12 @@ export default {
                         }
                     ]
             },
-            navCurrentSlide: 0
+            navCurrentSlide: 0, 
+            isLoaded: false
         }   
     },
     components: {
+        CubeSpin,
         VueNavSlickCarousel,
         VueSlickCarousel,
         tAvailable,
@@ -267,7 +271,14 @@ export default {
     },
     mounted(){
         this.SHOW_CATEGORIES(),
-        this.SHOW_REGIONS()        
+        this.SHOW_REGIONS(),
+        window.addEventListener('load', () => {
+         setTimeout(() => {
+             document.body.classList.add('app-mounted')
+             this.isLoaded = true
+         },1500)
+        
+        })
     },
     watch: {
         GET_REGION() { 
@@ -282,6 +293,9 @@ export default {
 
 <style lang="scss">
 
+body:not(.app-mounted) .t-main__spinner {
+  display: flex;
+}
 
 // slide effect
 .slide-leave-active,

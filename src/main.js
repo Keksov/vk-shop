@@ -6,6 +6,7 @@ import VueClipboard from 'vue-clipboard2'
 var infiniteScroll =  require('vue-infinite-scroll')
 import Notifications from 'vue-notification'
 // slick
+import CubeSpin from 'vue-loading-spinner/src/components/Circle'
 // touch
 import Vue2TouchEvents from 'vue2-touch-events'
 // styles
@@ -15,6 +16,7 @@ Vue.use(VueClipboard)
 Vue.use(infiniteScroll)
 Vue.use(Notifications)
 Vue.use(Vue2TouchEvents, {swipeTolerance: 5})
+Vue.use(CubeSpin)
 
 Vue.config.productionTip = false
 

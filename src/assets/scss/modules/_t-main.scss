@@ -1,3 +1,19 @@
 .t-main {
     // background-color: #000;
+    &__spinner {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+    }
+    &__catalog {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.35s ease-in;
+        &.t_visible {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
 }
