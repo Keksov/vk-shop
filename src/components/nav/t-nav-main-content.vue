@@ -42,7 +42,7 @@
                         <li
                             v-for="(result, i) in results"
                             :key="i"
-                            @click="sortByRegionSearch(result)"
+                            @click="sortByRegionSearch(result.name)"
                             class="autocomplete-result"
                         >
                             {{ result.name }} - {{ result.counter}}                            
@@ -101,7 +101,7 @@ export default {
             this.isOpen = false
             // меняем карегорию
             // this.CHANGE_REGIONS_SHOW_STATUS(false)
-            console.log('test region', this.regionText)
+            // console.log('test region', this.regionText.name)
             this.CHANGE_REGION(this.regionText)
 
             // обновляем продавцов
