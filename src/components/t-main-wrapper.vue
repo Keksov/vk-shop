@@ -10,12 +10,15 @@
                 <div class="t-nav-slider">
                     <div class="t-nav-slider__content">Товары наличие</div>
                 </div>
-                <div class="t-nav-slider">
-                    <div class="t-nav-slider__content">Товары заказ</div>
-                </div>
+                
                 <div class="t-nav-slider">
                     <div class="t-nav-slider__content">Агенты наличие</div>
                 </div>
+
+                <div class="t-nav-slider">
+                    <div class="t-nav-slider__content">Товары заказ</div>
+                </div>
+
                 <div class="t-nav-slider">
                     <div class="t-nav-slider__content">Агенты заказ</div>
                 </div>
@@ -27,19 +30,24 @@
                 class="tMainSlider"
                 @beforeChange="mainBeforeChange"
             >
-                <div class="t-catalog__slide">
-                   <tAvailable />
-                </div>
-                <div class="t-catalog__slide">
-                    <tUnderOrder />
-                </div>
-                <div class="t-catalog__slide">
-                    <tAgentsAvailable />
-                </div>
-                <div class="t-catalog__slide">
-                    <tAgentsUnderOrder />
-                </div>
-            </VueSlickCarousel>
+                
+                    <div class="t-catalog__slide">
+                        <tAvailable />
+                    </div>
+                
+                    <div class="t-catalog__slide">
+                        <tAgentsAvailable />
+                    </div>
+               
+                    <div class="t-catalog__slide">
+                        <tUnderOrder />
+                    </div>
+              
+                    <div class="t-catalog__slide">
+                        <tAgentsUnderOrder />
+                    </div>
+            
+            </VueSlickCarousel>                
         </div>
         <div class="t-nav">
             <transition name="slideUp">
