@@ -122,6 +122,7 @@ export default {
                     {
                         "breakpoint": 425,
                         "settings":{
+                            infinite: false,
                             centerMode: true,
                             centerPadding: "20px",
                             slidesToShow: 1,
@@ -169,7 +170,8 @@ export default {
                             },
                         }
                     ]
-            }
+            },
+            navCurrentSlide: 0
         }   
     },
     components: {
@@ -212,12 +214,27 @@ export default {
             this.$refs.c1.goTo(0)
         },
         navBeforeChange(currentSlide, nextSlide) {
-            if(currentSlide < nextSlide && currentSlide != nextSlide){
-                this.$refs.c1.next()
-            } 
-            if(currentSlide > nextSlide && currentSlide != nextSlide) {
-                this.$refs.c1.prev()
-            }
+             
+                /** 
+                * 3 0 Next 
+                * 0 3 Prev 
+                * */
+                if(currentSlide == 3 && nextSlide == 3) {
+                    if(this.navCurrentSlide < 4){
+                        this.$refs.c1.next()
+                        this.navCurrentSlide++
+                    }
+                }
+
+                if(currentSlide == 0 && nextSlide == 0) {
+                    if(this.navCurrentSlide > 0){
+                        this.$refs.c1.prev()
+                        this.navCurrentSlide--
+                    }
+                }
+                            
+                // console.log('curr', currentSlide, nextSlide, this.navCurrentSlide)
+            
         },
         mainBeforeChange(currentSlide, nextSlide) {
             if(currentSlide < nextSlide && currentSlide != nextSlide){
@@ -230,7 +247,7 @@ export default {
     },
     mounted(){
         this.SHOW_CATEGORIES(),
-        this.SHOW_REGIONS()
+        this.SHOW_REGIONS()        
     },
     watch: {
         GET_REGION() { 
