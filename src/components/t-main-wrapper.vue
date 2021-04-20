@@ -113,7 +113,8 @@ export default {
                 swipe: false,
                 dots: false,
                 arrows: false,
-                asNavFor: this.$refs.c1,
+                // asNavFor: this.$refs.c1,
+                variableWidth: false,
                 responsive: [
                     {
                         "breakpoint": 1025,
@@ -137,9 +138,10 @@ export default {
                         "settings":{
                             infinite: false,
                             centerMode: true,
-                            centerPadding: "20px",
+                            centerPadding: "40px",
                             slidesToShow: 1,
                             slidesToScroll: 1,
+                            variableWidth: true,
                             swipe: true
                         },
                     }
@@ -236,7 +238,7 @@ export default {
                 * 0 3 Prev 
                 * */
                 if(currentSlide == 3 && nextSlide == 3) {
-                    if(this.navCurrentSlide < 4){
+                    if(this.navCurrentSlide < 3){
                         this.$refs.c1.next()
                         this.navCurrentSlide++
                     }
@@ -249,7 +251,7 @@ export default {
                     }
                 }
                             
-                // console.log('curr', currentSlide, nextSlide, this.navCurrentSlide)
+                console.log('curr', currentSlide, nextSlide, this.navCurrentSlide)
             
         },
         mainBeforeChange(currentSlide, nextSlide) {
