@@ -16,20 +16,29 @@
     }
 }
 .tMainNav {
-    .slick-slide.slick-current {
+
+    .slick-slide {
+        margin-left:5px;
         .t-nav-slider {
+            border: 0.5px solid rgba(85, 85, 85, 0.15);
             border-radius: 13px;
+        }
+    }
+    .slick-slide.slick-active {
+        .t-nav-slider {
+            
             border: 1px solid #FF0000;
         }
     }
     .slick-list {
+        margin-left: -5px;
         padding: 0!important;
     }
 }
 .t-nav-slider {
     &__content {
         height: 40px;
-        padding: 0 20px;
+        padding: 0 10px;
         border-radius: 13px;
         background-color: #fff;
         text-align: center;
@@ -37,6 +46,7 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 24px;
+        text-transform: lowercase;
         display: flex;
         align-items: center;
         justify-content: center;

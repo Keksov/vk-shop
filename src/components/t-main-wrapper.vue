@@ -136,7 +136,7 @@ export default {
                     {
                         "breakpoint": 425,
                         "settings":{
-                            infinite: false,
+                            infinite: true,
                             centerMode: true,
                             centerPadding: "40px",
                             slidesToShow: 1,
